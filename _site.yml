@@ -1,0 +1,13 @@
+name: "QAC201Z Resources"
+output_dir: "docs"
+navbar:
+  title: "QAC201Z Resources"
+  left:
+  - text: "Resources"
+    href: index.html
+  - text: "Translation Syntax Example"
+    href: translation_syntax.html
+output:
+  html_document:
+    toc: TRUE
+    theme: "cosmo"

@@ -1,13 +1,5 @@
 ---
-title: "QAC201Z Resources"
-knit: (function(input_file, encoding) {
-  out_dir <- 'docs';
-  rmarkdown::render(input_file,
- encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
-author: "Tony Wen"
-date: "1/3/2022"
-output: html_document
+title: "Translation Syntax Example"
 ---
 
 ```{r setup, include=FALSE}
@@ -22,37 +14,6 @@ library(descr) # freq()
 ## install.packages("ggplot2")
 library(ggplot2)
 ```
-
-## **Resources**
-
-<font size = "4">
-
-+ [P-drive Setup Instruction](https://qac.blogs.wesleyan.edu/the-p-drivedragon/)
-
-+ Function "Dictionary"
-  + [Rdocumentation](https://www.rdocumentation.org/)
-  + [rdrr.io](https://rdrr.io/r/)
-  
-+ [Data Management (Quick-R)](https://www.statmethods.net/management/index.html)
-
-+ Data Visualization
-  + [Introduction to Graphing in R](http://adatawinter.site.wesleyan.edu/files/2021/03/QAC201_Rgraphing2.pdf)
-  + [Data Visualization ebook](https://rkabacoff.github.io/datavis/)
-  + [The R Gallery](https://www.r-graph-gallery.com/index.html)
-  
-+ Hypothesis Testing Interpretation
-  + [$\chi^2$](http://www.sthda.com/english/wiki/chi-square-test-of-independence-in-r)
-  + [ANOVA](http://www.sthda.com/english/wiki/one-way-anova-test-in-r)
-  + [Pearson Correlation](http://www.sthda.com/english/wiki/correlation-test-between-two-variables-in-r)
-
-+ Regression
-  + [Linear Regression in R](https://www.youtube.com/watch?v=u1cc1r_Y7M0&list=PLblh5JKOoLUIzaEkCLIUxQFjPIlapw8nU&index=3)
-  + [Multiple Regression in R](https://www.youtube.com/watch?v=hokALdIst8k&list=PLblh5JKOoLUIzaEkCLIUxQFjPIlapw8nU&index=7)
-  + [Logistic Regression in R](https://www.youtube.com/watch?v=C4N3_XJJ-jU&list=PLblh5JKOoLUKxzEP5HA2d-Li7IJkHfXSe&index=7)
-
-</font>
-
-## **R Translation Syntax Example**
 
 ### **Data Management**
 
