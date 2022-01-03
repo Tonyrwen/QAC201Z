@@ -11,25 +11,360 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+# set the header {r} for all code chunks
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+##### Package Deposit
+```{r warning = F}
+## install.packages("descr")
+library(descr) # freq()
+## install.packages("ggplot2")
+library(ggplot2)
 ```
 
-## Including Plots
+## **Resources**
 
-You can also embed plots, for example:
+<font size = "4">
 
-```{r pressure, echo=FALSE}
-plot(pressure)
++ [P-drive Setup Instruction](https://qac.blogs.wesleyan.edu/the-p-drivedragon/)
+
++ Function "Dictionary"
+  + [Rdocumentation](https://www.rdocumentation.org/)
+  + [rdrr.io](https://rdrr.io/r/)
+  
++ [Data Management (Quick-R)](https://www.statmethods.net/management/index.html)
+
++ Data Visualization
+  + [Introduction to Graphing in R](http://adatawinter.site.wesleyan.edu/files/2021/03/QAC201_Rgraphing2.pdf)
+  + [Data Visualization ebook](https://rkabacoff.github.io/datavis/)
+  + [The R Gallery](https://www.r-graph-gallery.com/index.html)
+  
++ Hypothesis Testing Interpretation
+  + [$\chi^2$](http://www.sthda.com/english/wiki/chi-square-test-of-independence-in-r)
+  + [ANOVA](http://www.sthda.com/english/wiki/one-way-anova-test-in-r)
+  + [Pearson Correlation](http://www.sthda.com/english/wiki/correlation-test-between-two-variables-in-r)
+
++ Regression
+  + [Linear Regression in R](https://www.youtube.com/watch?v=u1cc1r_Y7M0&list=PLblh5JKOoLUIzaEkCLIUxQFjPIlapw8nU&index=3)
+  + [Multiple Regression in R](https://www.youtube.com/watch?v=hokALdIst8k&list=PLblh5JKOoLUIzaEkCLIUxQFjPIlapw8nU&index=7)
+  + [Logistic Regression in R](https://www.youtube.com/watch?v=C4N3_XJJ-jU&list=PLblh5JKOoLUKxzEP5HA2d-Li7IJkHfXSe&index=7)
+
+</font>
+
+## **R Translation Syntax Example**
+
+### **Data Management**
+
+##### create a data set with categorical and numeric variables and save as .csv
+```{r}
+# numerical variable
+v1 <- runif(100, 0, 7.5) # generate 10 random numbers between 0 and 7.5
+v2 <- runif(100, 7.5, 15)
+
+# categorical variable
+v3 <- sample(c("x", "y", "z", "n"), size = 100, replace = T) # randomly sample 10 observations out of x, y, z
+v4 <- sample(c("a", "b", "c", "n"), size = 100, replace = T)
+v5 <- sample(c("p", "q", "n"), size = 100, replace = T)
+
+# combine variables into a dataframe
+ie.df <- data.frame(v1, v2, v3, v4, v5) 
+
+# save as csv
+write.table(ie.df, file = "C:\\Users\\tonyr\\Downloads\\QAC201Z_Material\\example.csv", sep = ",", row.names = F)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+##### sort the data
+```{r}
+# sort by ascending v1
+ie.df <- ie.df[order(ie.df$v1, decreasing = F), ]
+```
+
+##### selecting observations
+```{r}
+# subset observations with x
+ie.x <- ie.df[ie.df$v3 == "x", ]
+
+# subset observations with x and a
+ie.xa <- ie.df[ie.df$v3 == "x" & ie.df$v4 == "a", ]
+```
+
+##### Deal with missing data
+```{r}
+# label missing data with NA
+## v3 and v4 "n" codes for NA
+ie.df$v3[ie.df$v3 == "n"] <- NA
+ie.df$v4[ie.df$v4 == "n"] <- NA
+ie.df$v5[ie.df$v5 == "n"] <- NA
+
+# subset observations without NA values in any variables
+na.omit(ie.df)
+
+# subset observations without NA values in selected variable
+ie.df[!is.na(ie.df$v3),]
+```
+
+##### collapse response into a new variable
+```{r}
+# bin v1 into 4 sections 
+ie.df$v6[ie.df$v1 < 2] <- 1
+ie.df$v6[ie.df$v1 >=2 & ie.df$v1 < 4] <- 2
+ie.df$v6[ie.df$v1 >= 4 & ie.df$v1 < 6] <- 3
+ie.df$v6[ie.df$v1 >= 6 & ie.df$v1 < 8] <- 4
+
+# combine v3 and v4 into v7
+ie.df$v7[is.na(ie.df$v3) | is.na(ie.df$v4)] <- NA
+ie.df$v7[ie.df$v3 == "x" & ie.df$v4 == "a"] <- "xa"
+ie.df$v7[ie.df$v3 == "x" & ie.df$v4 == "b"] <- "xb"
+ie.df$v7[ie.df$v3 == "x" & ie.df$v4 == "c"] <- "xc"
+ie.df$v7[ie.df$v3 == "y" & ie.df$v4 == "a"] <- "ya"
+ie.df$v7[ie.df$v3 == "y" & ie.df$v4 == "b"] <- "yb"
+ie.df$v7[ie.df$v3 == "y" & ie.df$v4 == "c"] <- "yc"
+ie.df$v7[ie.df$v3 == "z" & ie.df$v4 == "a"] <- "za"
+ie.df$v7[ie.df$v3 == "z" & ie.df$v4 == "b"] <- "zb"
+ie.df$v7[ie.df$v3 == "z" & ie.df$v4 == "c"] <- "zc"
+
+# sum up v1 and v2 into v7
+ie.df$v8 <- ie.df$v1 + ie.df$v2
+```
+
+##### rename variable
+```{r}
+names(ie.df)[names(ie.df) == "v8"] <- "v1_v2"
+names(ie.df)[names(ie.df) == "v7"] <- "v3_v4"
+names(ie.df)[names(ie.df) == "v6"] <- "v1_level"
+```
+
+##### label variable values
+```{r}
+levels(ie.df$v1_level) <- c("lowest", "low", "high", "highest")
+```
+
+
+### **Univariate Analysis**
+
+##### **Categorical Variables**
+```{r}
+# frequency
+#library(descr)
+freq(as.ordered(ie.df$v3_v4))
+
+# frequency barplot
+#library(ggplot2)
+ggplot(data = na.omit(ie.df)) + # na.omit() removes any observations containing NA
+  geom_bar(aes(x = v3_v4)) +
+  ggtitle("v3_v4 frequency barplot")
+```
+
+##### **Numeric Variables**
+```{r}
+# mean and standard deviation
+mean(ie.df$v1_v2, na.rm = T)
+sd(ie.df$v1_v2, na.rm = T)
+
+# histogram
+ggplot(data = ie.df)+
+  geom_histogram(aes(x = v1_v2))+
+  ggtitle("v1_v2 histogram")
+```
+
+
+### **Bivariate Analysis**
+
+##### **Categorical-Categorical** (crosstabs)
+```{r}
+# crosstabs
+table(ie.df$v3, ie.df$v4)
+prop.table(table(ie.df$v3, ie.df$v4), 2) # col proportions
+prop.table(table(ie.df$v3, ie.df$v4), 1) # row proportions
+prop.table(table(ie.df$v3, ie.df$v4)) # cell proportions
+
+# for binary categorical response
+graph_data <- data.frame(v3 = na.omit(ie.df)$v3, 
+                         v5 = ifelse(na.omit(ie.df)$v5 == "p", 0, 1))
+ggplot(data = graph_data)+
+  stat_summary(aes(x=v3, y = v5), fun = "mean", geom = "bar")+
+  ylab("poriton of responses that are '1 (aka. q)'")+
+  ggtitle("percentage of q within v3 groups")
+
+# stacked barplot for mutli-level categorical responses
+graph_data <- data.frame(v4 = c(rep("a", 3), rep("b", 3), rep("c", 3)),
+                         v3 = rep(c("x", "y", "z"), 3),
+                         value = as.numeric(table(ie.df$v3, ie.df$v4)))
+
+ggplot(data = graph_data, aes(fill = v4, x = v3, y = value))+
+  geom_bar(position = "stack", stat = "identity")+
+  ylab("number of observations")+
+  ggtitle("number of subjects at each response level within each group")
+```
+
+
+##### **Numeric-Categorical** (means by group)
+```{r}
+# mean by group
+by(ie.df$v1, ie.df$v3_v4, mean, na.rm = T)
+# standard deviation by group
+by(ie.df$v1, ie.df$v3_v4, sd, na.rm = T)
+# number of observations in group
+by(ie.df$v1, ie.df$v3_v4, length)
+
+# barplot
+ggplot(data = na.omit(ie.df))+
+  stat_summary(aes(x = v3_v4, y = v1), fun = "mean", geom = "bar")+
+  ggtitle("mean barplot")
+
+# boxplot
+ggplot(data = na.omit(ie.df))+
+  geom_boxplot(aes(x = v3_v4, y = v1))+
+  ggtitle("boxplot")
+```
+
+##### **Numeric-Numeric**
+```{r}
+ggplot(data = na.omit(ie.df), aes(x = v1, y = v1_v2))+
+  geom_point()+
+  geom_smooth(method = "lm")+
+  ggtitle("Correlation between v1_v2 and v1")
+```
+
+
+### **Multivariate Analysis** (Bivariate by subpopulation)
+
+##### **Categorical-Categorical**
+```{r}
+# for binary categorical response
+graph_data <- data.frame(v3 = na.omit(ie.df)$v3, 
+                         v5 = ifelse(na.omit(ie.df)$v5 == "p", 0, 1),
+                         v4 = na.omit(ie.df)$v4)
+ggplot(data = graph_data)+
+  stat_summary(aes(x=v3, y = v5), fun = "mean", geom = "bar")+
+  facet_grid(.~v4)+
+  ylab("poriton of responses that are '1 (aka. q)'")+
+  ggtitle("percentage of q within v3 groups")
+
+# stacked barplot for mutli-level categorical responses
+graph_data <- data.frame(v4 = rep(c(rep("a", 3), rep("b", 3), rep("c", 3)), 2),
+                         v3 = rep(c("x", "y", "z"), 6),
+                         value = c(as.numeric(table(ie.df[ie.df$v5 == "p",]$v3, ie.df[ie.df$v5 == "p",]$v4)), 
+                                   as.numeric(table(ie.df[ie.df$v5 == "q",]$v3, ie.df[ie.df$v5 == "q",]$v4))),
+                         v5 = c(rep("p", 9), rep("q", 9)))
+
+ggplot(data = graph_data)+
+  geom_bar(position = "stack", aes(fill = v4, x = v3, y = value), stat = "identity")+
+  facet_grid(.~v5)+
+  ylab("number of observations")+
+  ggtitle("number of subjects at each response level within each group")
+```
+
+##### **Numeric-Categorical**
+```{r}
+# mean by group 
+ftable(by(ie.df$v1_v2, list(ie.df$v3_v4, ie.df$v5), mean, na.rm = T))
+
+# boxplot
+ggplot(data = na.omit(ie.df)) +
+  geom_boxplot(aes(x = v3_v4, y = v1_v2))+
+  facet_grid(.~v5)+
+  ggtitle("")
+```
+
+##### **Numeric-Numeric**
+```{r}
+ggplot(data = na.omit(ie.df), aes(x = v1, y = v1_v2))+
+  geom_point()+
+  geom_smooth(method = "lm")+
+  facet_grid(.~v5)
+```
+
+
+### **Hypothesis Testing**
+
+#### **Categorical-Categorical ($\chi^2$)**
+##### Bivariate
+```{r}
+# chisquare
+chisq.test(na.omit(ie.df)$v4, na.omit(ie.df)$v3)
+
+# chisquare cell counts
+chisq.test(na.omit(ie.df)$v4, na.omit(ie.df)$v3)$observed
+
+# posthoc (for more than two levels)
+source("https://raw.githubusercontent.com/PassionDrivenStatistics/R/master/ChiSquarePostHoc.R")
+chisq.post.hoc(chisq.test(na.omit(ie.df)$v4, na.omit(ie.df)$v3)$observed,
+               popsInRows = F,
+               control = "bonferroni")
+
+# Pearson Residuals
+chisq.test(na.omit(ie.df)$v4, na.omit(ie.df)$v3)$residuals
+```
+##### Multivariate
+```{r}
+by(na.omit(ie.df), na.omit(ie.df)$v5, function(x) list(chisq.test(x$v4, x$v3),
+                                                       chisq.test(x$v4, x$v3)$observed,
+                                                       prop.table(chisq.test(x$v4, x$v3)$observed, 2)))
+```
+
+#### **Numeric-Categorical (ANOVA)**
+##### Bivariate
+```{r}
+# anova
+summary(aov(v1_v2 ~ v3_v4, data = na.omit(ie.df)))
+
+# posthoc
+TukeyHSD(aov(v1_v2 ~ v3_v4, data = na.omit(ie.df)))
+```
+##### Multivariate
+```{r}
+by(na.omit(ie.df), na.omit(ie.df)$v5, function(x) list(aov(v1_v2 ~ v3_v4, data = x),
+                                                       summary(aov(v1_v2 ~ v3_v4, data = x)),
+                                                       TukeyHSD(aov(v1_v2 ~ v3_v4, data = x))))
+```
+
+
+#### **Numeric-Numeric (Pearson Correlation)**
+##### Bivariate
+```{r}
+cor.test(na.omit(ie.df)$v1_v2, na.omit(ie.df)$v1)
+```
+##### Multivariate
+```{r}
+by(na.omit(ie.df), na.omit(ie.df)$v5, function(x) cor.test(x$v1_v2, x$v1))
+```
+
+
+### **Regression**
+
+##### **linear regression (numeric response)**
+```{r}
+# simple
+summary(lm(v1_v2 ~ v1, data = na.omit(ie.df)))
+
+# multiple
+summary(lm(v1_v2 ~ v1 + factor(v5), data = na.omit(ie.df)))
+
+# multiple with interaction terms
+summary(lm(v1_v2 ~ v1 + factor(v5) + v1*factor(v5), data = na.omit(ie.df)))
+```
+
+##### **logistic regression (categorical response)**
+```{r}
+# simple
+summary(glm(factor(v5) ~ v1, data = na.omit(ie.df), family = "binomial")) # p-value
+exp(glm(factor(v5) ~ v1, data = na.omit(ie.df), family = "binomial")$coefficients) # odd-ratios
+exp(confint(glm(factor(v5) ~ v1, data = na.omit(ie.df), family = "binomial"))) # confidence interval of odd ratios
+
+
+# multiple
+summary(glm(factor(v5) ~ v1 + factor(v3), data = na.omit(ie.df), family = "binomial")) # p-value
+exp(glm(factor(v5) ~ v1 + factor(v3), data = na.omit(ie.df), family = "binomial")$coefficients) # odd-ratios
+exp(confint(glm(factor(v5) ~ v1 + factor(v3), data = na.omit(ie.df), family = "binomial"))) # confidence interval of odd ratios
+
+# multiple with interaction terms
+summary(glm(factor(v5) ~ v1 + factor(v3) + v1*factor(v3), data = na.omit(ie.df), family = "binomial")) # p-value
+exp(glm(factor(v5) ~ v1 + factor(v3) + v1*factor(v3), data = na.omit(ie.df), family = "binomial")$coefficients) # odd-ratios
+exp(confint(glm(factor(v5) ~ v1 + factor(v3) + v1*factor(v3), data = na.omit(ie.df), family = "binomial"))) # confidence interval of odd ratios
+```
+
+```{r}
+
+```
