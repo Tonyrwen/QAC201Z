@@ -102,7 +102,7 @@ levels(ie.df$v1_level) <- c("lowest", "low", "high", "highest")
 ```
 
 
-### **Univariate Analysis**
+### **Univariate Analysis** {.tabset}
 
 ##### **Categorical Variables**
 ```{r}
@@ -130,7 +130,7 @@ ggplot(data = ie.df)+
 ```
 
 
-### **Bivariate Analysis**
+### **Bivariate Analysis**{.tabset}
 
 ##### **Categorical-Categorical** (crosstabs)
 ```{r}
@@ -189,7 +189,7 @@ ggplot(data = na.omit(ie.df), aes(x = v1, y = v1_v2))+
 ```
 
 
-### **Multivariate Analysis** (Bivariate by subpopulation)
+### **Multivariate Analysis** (Bivariate by subpopulation) {.tabset}
 
 ##### **Categorical-Categorical**
 ```{r}
@@ -238,7 +238,7 @@ ggplot(data = na.omit(ie.df), aes(x = v1, y = v1_v2))+
 ```
 
 
-### **Hypothesis Testing**
+### **Hypothesis Testing** {.tabset}
 
 #### **Categorical-Categorical ($\chi^2$)**
 ##### Bivariate
@@ -293,7 +293,7 @@ by(na.omit(ie.df), na.omit(ie.df)$v5, function(x) cor.test(x$v1_v2, x$v1))
 ```
 
 
-### **Regression**
+### **Regression** {.tabset}
 
 ##### **linear regression (numeric response)**
 ```{r}
