@@ -29,9 +29,6 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -221,69 +218,6 @@ $(document).ready(function () {
 
 
 
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-
 
 </head>
 
@@ -291,16 +225,6 @@ div.tocify {
 
 
 <div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -347,10 +271,13 @@ library(descr) # freq()
 ## install.packages(&quot;ggplot2&quot;)
 library(ggplot2)</code></pre>
 </div>
-<div id="data-management" class="section level3">
-<h3><strong>Data Management</strong></h3>
+<div id="section" class="section level2 tabset">
+<h2 class="tabset"></h2>
+<div id="data-management" class="section level3 tabset">
+<h3 class="tabset"><strong>Data Management</strong></h3>
+<p><font size = "5"><strong>Data Management</strong></font></p>
 <div id="create-a-data-set-with-categorical-and-numeric-variables-and-save-as-.csv" class="section level5">
-<h5>create a data set with categorical and numeric variables and save as .csv</h5>
+<h5><strong>create a data set with categorical and numeric variables and save as .csv</strong></h5>
 <pre class="r"><code># numerical variable
 v1 &lt;- runif(100, 0, 7.5) # generate 10 random numbers between 0 and 7.5
 v2 &lt;- runif(100, 7.5, 15)
@@ -366,159 +293,172 @@ ie.df &lt;- data.frame(v1, v2, v3, v4, v5)
 # save as csv
 write.table(ie.df, file = &quot;C:\\Users\\tonyr\\Downloads\\QAC201Z_Material\\example.csv&quot;, sep = &quot;,&quot;, row.names = F)</code></pre>
 </div>
-<div id="sort-the-data" class="section level5">
-<h5>sort the data</h5>
-<pre class="r"><code># sort by ascending v1
-ie.df &lt;- ie.df[order(ie.df$v1, decreasing = F), ]</code></pre>
+<div id="sort-the-data" class="section level4">
+<h4>sort the data</h4>
+<div id="sort-by-ascending-v1" class="section level5">
+<h5><strong>sort by ascending v1</strong></h5>
+<pre class="r"><code>ie.df &lt;- ie.df[order(ie.df$v1, decreasing = F), ]</code></pre>
 </div>
-<div id="selecting-observations" class="section level5">
-<h5>selecting observations</h5>
-<pre class="r"><code># subset observations with x
-ie.x &lt;- ie.df[ie.df$v3 == &quot;x&quot;, ]
-
-# subset observations with x and a
-ie.xa &lt;- ie.df[ie.df$v3 == &quot;x&quot; &amp; ie.df$v4 == &quot;a&quot;, ]</code></pre>
 </div>
-<div id="deal-with-missing-data" class="section level5">
-<h5>Deal with missing data</h5>
-<pre class="r"><code># label missing data with NA
-## v3 and v4 &quot;n&quot; codes for NA
-ie.df$v3[ie.df$v3 == &quot;n&quot;] &lt;- NA
+<div id="select-responses" class="section level4">
+<h4>select responses</h4>
+<div id="subset-observations-with-x" class="section level5">
+<h5><strong>subset observations with x</strong></h5>
+<pre class="r"><code>ie.x &lt;- ie.df[ie.df$v3 == &quot;x&quot;, ]</code></pre>
+</div>
+<div id="subset-observations-with-x-and-a" class="section level5">
+<h5><strong>subset observations with x and a</strong></h5>
+<pre class="r"><code>ie.xa &lt;- ie.df[ie.df$v3 == &quot;x&quot; &amp; ie.df$v4 == &quot;a&quot;, ]</code></pre>
+</div>
+</div>
+<div id="deal-with-missing-data" class="section level4">
+<h4>Deal with missing data</h4>
+<div id="label-missing-data-as-na" class="section level5">
+<h5><strong>label missing data as NA</strong></h5>
+<ul>
+<li>v3, v4, v5 “n” codes for missing data</li>
+</ul>
+<pre class="r"><code>ie.df$v3[ie.df$v3 == &quot;n&quot;] &lt;- NA
 ie.df$v4[ie.df$v4 == &quot;n&quot;] &lt;- NA
-ie.df$v5[ie.df$v5 == &quot;n&quot;] &lt;- NA
-
-# subset observations without NA values in any variables
-na.omit(ie.df)</code></pre>
-<pre><code>##           v1        v2 v3 v4 v5
-## 89 0.1639918 13.503998  x  c  q
-## 7  0.3068860 11.206621  z  a  p
-## 42 0.4355370 12.844374  y  a  q
-## 96 0.4585208  9.323669  x  c  p
-## 53 0.6891754  7.866178  y  c  q
-## 64 0.7275314  9.581019  y  c  q
-## 5  1.0407647 13.266332  y  a  q
-## 4  1.0885182 13.419666  z  a  q
-## 8  1.5071445 14.970087  z  a  q
-## 57 1.6711846  8.149576  y  a  p
-## 17 1.7120497 14.540856  z  a  q
-## 31 1.9552841 13.266741  y  b  p
-## 79 2.0628351 13.640444  x  a  q
-## 21 2.1777206 13.771450  x  a  q
-## 99 2.2156022 13.610458  x  b  q
-## 36 2.2264654 10.714838  y  b  p
-## 49 2.3566591 10.104100  y  c  p
-## 72 2.9841591 14.982588  y  b  p
-## 24 3.4338219  7.526196  y  a  q
-## 35 3.5940046 13.883334  z  b  p
-## 6  3.6995538 14.775496  z  c  q
-## 92 3.8338670  8.842583  z  b  q
-## 13 3.9533544  9.446107  z  c  q
-## 40 3.9619523 13.675776  y  a  p
-## 50 4.0885309 13.583344  y  a  p
-## 26 4.1280707 14.892472  z  c  p
-## 70 4.1312786 13.447564  z  a  q
-## 11 4.1983567  9.272859  x  c  q
-## 76 4.5877372  9.847055  y  b  q
-## 25 4.7422310  8.542058  y  a  q
-## 33 4.8417177 10.956010  y  a  q
-## 60 5.0038544  9.768811  x  c  p
-## 43 5.2135462 10.839740  z  b  q
-## 51 5.6553037 10.053493  z  c  q
-## 48 5.6582165 10.280161  y  b  q
-## 27 5.7078119 12.022818  y  a  p
-## 98 5.8009988  8.393857  x  c  p
-## 55 5.9005554  7.607890  y  b  p
-## 67 6.6875070 14.060710  y  b  p
-## 52 6.7903477 12.614685  y  b  p
-## 77 7.0104946 10.271521  x  b  q
-## 78 7.4011146 12.725862  y  b  q</code></pre>
-<pre class="r"><code># subset observations without NA values in selected variable
-ie.df[!is.na(ie.df$v3),]</code></pre>
-<pre><code>##            v1        v2 v3   v4   v5
-## 83 0.02300793 14.274959  z &lt;NA&gt; &lt;NA&gt;
-## 89 0.16399179 13.503998  x    c    q
-## 7  0.30688597 11.206621  z    a    p
-## 42 0.43553701 12.844374  y    a    q
-## 96 0.45852084  9.323669  x    c    p
-## 53 0.68917545  7.866178  y    c    q
-## 64 0.72753138  9.581019  y    c    q
-## 16 0.90928002  7.571199  y    b &lt;NA&gt;
-## 2  0.95869544 12.290400  y &lt;NA&gt; &lt;NA&gt;
-## 66 0.97365476 12.559882  z &lt;NA&gt; &lt;NA&gt;
-## 91 0.99122347  9.342730  x &lt;NA&gt; &lt;NA&gt;
-## 5  1.04076474 13.266332  y    a    q
-## 4  1.08851824 13.419666  z    a    q
-## 34 1.29513173 11.360328  x &lt;NA&gt; &lt;NA&gt;
-## 8  1.50714451 14.970087  z    a    q
-## 69 1.60343108 14.780876  z    a &lt;NA&gt;
-## 57 1.67118462  8.149576  y    a    p
-## 17 1.71204966 14.540856  z    a    q
-## 65 1.83804403  8.851335  z &lt;NA&gt;    p
-## 31 1.95528414 13.266741  y    b    p
-## 79 2.06283511 13.640444  x    a    q
-## 21 2.17772063 13.771450  x    a    q
-## 99 2.21560222 13.610458  x    b    q
-## 36 2.22646544 10.714838  y    b    p
-## 56 2.27376151 12.342114  x &lt;NA&gt; &lt;NA&gt;
-## 49 2.35665907 10.104100  y    c    p
-## 97 2.44225166  8.275425  x    a &lt;NA&gt;
-## 38 2.86145668  8.975840  x    c &lt;NA&gt;
-## 72 2.98415913 14.982588  y    b    p
-## 95 3.19472005 10.671845  y &lt;NA&gt;    q
-## 28 3.29415525 12.239623  z &lt;NA&gt;    p
-## 24 3.43382195  7.526196  y    a    q
-## 35 3.59400462 13.883334  z    b    p
-## 6  3.69955378 14.775496  z    c    q
-## 62 3.76477712 14.590988  y &lt;NA&gt;    p
-## 92 3.83386703  8.842583  z    b    q
-## 13 3.95335437  9.446107  z    c    q
-## 40 3.96195234 13.675776  y    a    p
-## 63 4.01458660 11.157493  x    b &lt;NA&gt;
-## 3  4.04926764 10.009612  y    a &lt;NA&gt;
-## 50 4.08853089 13.583344  y    a    p
-## 26 4.12807070 14.892472  z    c    p
-## 70 4.13127858 13.447564  z    a    q
-## 93 4.16447538 12.478541  y    a &lt;NA&gt;
-## 11 4.19835667  9.272859  x    c    q
-## 15 4.42480168 10.277070  x &lt;NA&gt;    p
-## 39 4.51677989 11.241021  z    b &lt;NA&gt;
-## 76 4.58773721  9.847055  y    b    q
-## 44 4.69420423 11.166064  y    a &lt;NA&gt;
-## 25 4.74223102  8.542058  y    a    q
-## 33 4.84171772 10.956010  y    a    q
-## 60 5.00385441  9.768811  x    c    p
-## 29 5.14876148 12.010292  z &lt;NA&gt; &lt;NA&gt;
-## 43 5.21354621 10.839740  z    b    q
-## 87 5.40093602  8.921047  y &lt;NA&gt; &lt;NA&gt;
-## 51 5.65530368 10.053493  z    c    q
-## 48 5.65821655 10.280161  y    b    q
-## 27 5.70781193 12.022818  y    a    p
-## 98 5.80099881  8.393857  x    c    p
-## 55 5.90055545  7.607890  y    b    p
-## 19 6.31116232  8.823866  x &lt;NA&gt;    q
-## 12 6.47522894  8.193737  z    c &lt;NA&gt;
-## 94 6.47680904  9.409503  x &lt;NA&gt;    q
-## 67 6.68750698 14.060710  y    b    p
-## 74 6.73762666 13.163631  x    a &lt;NA&gt;
-## 73 6.76725050 10.482811  z    b &lt;NA&gt;
-## 52 6.79034765 12.614685  y    b    p
-## 30 6.83299881 13.285812  z    a &lt;NA&gt;
-## 61 7.00224652  8.289012  x    a &lt;NA&gt;
-## 77 7.01049456 10.271521  x    b    q
-## 80 7.03367879 14.400526  z    c &lt;NA&gt;
-## 68 7.35491510  8.746202  y    a &lt;NA&gt;
-## 78 7.40111457 12.725862  y    b    q</code></pre>
+ie.df$v5[ie.df$v5 == &quot;n&quot;] &lt;- NA</code></pre>
 </div>
-<div id="collapse-response-into-a-new-variable" class="section level5">
-<h5>collapse response into a new variable</h5>
-<pre class="r"><code># bin v1 into 4 sections 
-ie.df$v6[ie.df$v1 &lt; 2] &lt;- 1
+<div id="subset-observations-without-na-values-in-any-variables" class="section level5">
+<h5><strong>subset observations without NA values in any variables</strong></h5>
+<pre class="r"><code>na.omit(ie.df)</code></pre>
+<pre><code>##            v1        v2 v3 v4 v5
+## 91  0.1809376 13.857174  z  b  q
+## 2   0.3137385  9.997410  x  a  p
+## 11  0.6342106 10.658491  z  a  q
+## 35  0.6881439  9.292938  x  c  p
+## 16  0.8506247 11.629269  y  c  p
+## 56  0.8786280 14.168429  y  a  q
+## 30  0.9426692  7.536106  z  a  p
+## 72  0.9504764  8.411291  z  b  q
+## 88  1.0975797  8.737320  x  c  p
+## 53  1.1443043  7.686099  y  c  p
+## 8   1.3148100 11.901985  y  a  q
+## 26  1.4850058  9.037147  z  a  q
+## 19  1.8234813 11.557607  y  b  p
+## 6   1.9729622 13.080519  y  a  p
+## 14  2.1725477  9.011935  y  c  p
+## 64  2.1754367  9.320779  x  c  p
+## 94  2.2202551 13.773060  z  c  p
+## 23  2.2758308 12.922737  x  c  q
+## 77  2.3349510 11.910825  y  a  p
+## 17  2.4436156 10.399590  x  a  p
+## 76  2.6159111 13.667967  x  a  q
+## 15  2.6854367 12.125717  x  c  p
+## 4   2.9109295 14.887698  y  a  p
+## 68  3.2571004  9.162422  z  b  p
+## 95  3.5536853 13.487517  x  c  p
+## 98  4.0449314 11.413163  x  a  q
+## 40  4.2917259  8.353341  z  c  q
+## 71  4.3917724 13.503293  y  b  p
+## 44  4.4014720 10.000651  y  a  p
+## 97  4.4176894  8.157538  z  b  q
+## 74  4.4538346 10.936912  x  b  q
+## 63  5.4578971 13.419003  x  c  q
+## 36  5.5281771 10.786996  z  b  p
+## 49  5.8327903  8.368810  x  a  q
+## 41  5.9139618  7.570918  x  a  p
+## 70  6.1955181 13.544524  x  a  q
+## 45  6.7811127  8.681545  x  a  p
+## 100 6.8775520  8.258503  x  a  q
+## 34  7.0427935 13.589315  z  c  q
+## 31  7.0807861  8.382733  y  c  p
+## 29  7.0908623 13.062486  y  c  p
+## 75  7.0931606 13.011086  y  b  p
+## 50  7.2751171  7.601265  z  c  p
+## 9   7.3930629 13.492215  y  a  p</code></pre>
+</div>
+<div id="subset-observations-without-na-values-in-selected-variable" class="section level5">
+<h5><strong>subset observations without NA values in selected variable</strong></h5>
+<pre class="r"><code>ie.df[!is.na(ie.df$v3),]</code></pre>
+<pre><code>##            v1        v2 v3   v4   v5
+## 99  0.1249986  8.125656  y    a &lt;NA&gt;
+## 81  0.1529762  9.123689  x    b &lt;NA&gt;
+## 91  0.1809376 13.857174  z    b    q
+## 2   0.3137385  9.997410  x    a    p
+## 93  0.3474294 10.008184  z &lt;NA&gt;    q
+## 28  0.5320089 13.324051  x    a &lt;NA&gt;
+## 11  0.6342106 10.658491  z    a    q
+## 35  0.6881439  9.292938  x    c    p
+## 16  0.8506247 11.629269  y    c    p
+## 56  0.8786280 14.168429  y    a    q
+## 30  0.9426692  7.536106  z    a    p
+## 72  0.9504764  8.411291  z    b    q
+## 46  1.0168802  9.480107  y &lt;NA&gt;    q
+## 88  1.0975797  8.737320  x    c    p
+## 53  1.1443043  7.686099  y    c    p
+## 8   1.3148100 11.901985  y    a    q
+## 26  1.4850058  9.037147  z    a    q
+## 87  1.5234112  7.735724  x &lt;NA&gt;    q
+## 66  1.5863071 14.110067  y    b &lt;NA&gt;
+## 19  1.8234813 11.557607  y    b    p
+## 6   1.9729622 13.080519  y    a    p
+## 14  2.1725477  9.011935  y    c    p
+## 64  2.1754367  9.320779  x    c    p
+## 24  2.1793211 11.303995  x    c &lt;NA&gt;
+## 94  2.2202551 13.773060  z    c    p
+## 23  2.2758308 12.922737  x    c    q
+## 77  2.3349510 11.910825  y    a    p
+## 17  2.4436156 10.399590  x    a    p
+## 76  2.6159111 13.667967  x    a    q
+## 85  2.6770300  8.769323  z    a &lt;NA&gt;
+## 15  2.6854367 12.125717  x    c    p
+## 4   2.9109295 14.887698  y    a    p
+## 80  2.9450043  9.580851  z &lt;NA&gt;    q
+## 96  3.0833165  9.184751  z &lt;NA&gt;    q
+## 60  3.0894140 12.751270  x &lt;NA&gt;    q
+## 68  3.2571004  9.162422  z    b    p
+## 32  3.3692373 12.794185  x &lt;NA&gt;    p
+## 38  3.4850452 14.696348  z &lt;NA&gt; &lt;NA&gt;
+## 43  3.4891033 10.944184  z    a &lt;NA&gt;
+## 95  3.5536853 13.487517  x    c    p
+## 83  3.6816451  7.730128  y    b &lt;NA&gt;
+## 10  3.9907376 11.234918  z &lt;NA&gt;    p
+## 98  4.0449314 11.413163  x    a    q
+## 40  4.2917259  8.353341  z    c    q
+## 69  4.3263081 11.287222  z    c &lt;NA&gt;
+## 71  4.3917724 13.503293  y    b    p
+## 44  4.4014720 10.000651  y    a    p
+## 97  4.4176894  8.157538  z    b    q
+## 74  4.4538346 10.936912  x    b    q
+## 54  4.5154501 12.077337  x    b &lt;NA&gt;
+## 37  4.8554841  8.771589  x    c &lt;NA&gt;
+## 84  5.2824370 13.882283  x &lt;NA&gt; &lt;NA&gt;
+## 63  5.4578971 13.419003  x    c    q
+## 36  5.5281771 10.786996  z    b    p
+## 25  5.7889648 12.617723  x &lt;NA&gt;    p
+## 49  5.8327903  8.368810  x    a    q
+## 7   5.8821418 12.635148  y &lt;NA&gt;    p
+## 41  5.9139618  7.570918  x    a    p
+## 42  5.9865149 14.996885  x &lt;NA&gt;    q
+## 70  6.1955181 13.544524  x    a    q
+## 45  6.7811127  8.681545  x    a    p
+## 100 6.8775520  8.258503  x    a    q
+## 48  7.0290600 11.781323  z    b &lt;NA&gt;
+## 34  7.0427935 13.589315  z    c    q
+## 31  7.0807861  8.382733  y    c    p
+## 29  7.0908623 13.062486  y    c    p
+## 75  7.0931606 13.011086  y    b    p
+## 50  7.2751171  7.601265  z    c    p
+## 51  7.3561956 12.465326  z    c &lt;NA&gt;
+## 9   7.3930629 13.492215  y    a    p</code></pre>
+</div>
+</div>
+<div id="create-secondary-variables" class="section level4">
+<h4>create secondary variables</h4>
+<div id="bin-v1-into-4-sections" class="section level5">
+<h5><strong>bin v1 into 4 sections</strong></h5>
+<pre class="r"><code>ie.df$v6[ie.df$v1 &lt; 2] &lt;- 1
 ie.df$v6[ie.df$v1 &gt;=2 &amp; ie.df$v1 &lt; 4] &lt;- 2
 ie.df$v6[ie.df$v1 &gt;= 4 &amp; ie.df$v1 &lt; 6] &lt;- 3
-ie.df$v6[ie.df$v1 &gt;= 6 &amp; ie.df$v1 &lt; 8] &lt;- 4
-
-# combine v3 and v4 into v7
-ie.df$v7[is.na(ie.df$v3) | is.na(ie.df$v4)] &lt;- NA
+ie.df$v6[ie.df$v1 &gt;= 6 &amp; ie.df$v1 &lt; 8] &lt;- 4</code></pre>
+</div>
+<div id="combine-v3-and-v4-into-v7" class="section level5">
+<h5><strong>combine v3 and v4 into v7</strong></h5>
+<pre class="r"><code>ie.df$v7[is.na(ie.df$v3) | is.na(ie.df$v4)] &lt;- NA
 ie.df$v7[ie.df$v3 == &quot;x&quot; &amp; ie.df$v4 == &quot;a&quot;] &lt;- &quot;xa&quot;
 ie.df$v7[ie.df$v3 == &quot;x&quot; &amp; ie.df$v4 == &quot;b&quot;] &lt;- &quot;xb&quot;
 ie.df$v7[ie.df$v3 == &quot;x&quot; &amp; ie.df$v4 == &quot;c&quot;] &lt;- &quot;xc&quot;
@@ -527,93 +467,132 @@ ie.df$v7[ie.df$v3 == &quot;y&quot; &amp; ie.df$v4 == &quot;b&quot;] &lt;- &quot;
 ie.df$v7[ie.df$v3 == &quot;y&quot; &amp; ie.df$v4 == &quot;c&quot;] &lt;- &quot;yc&quot;
 ie.df$v7[ie.df$v3 == &quot;z&quot; &amp; ie.df$v4 == &quot;a&quot;] &lt;- &quot;za&quot;
 ie.df$v7[ie.df$v3 == &quot;z&quot; &amp; ie.df$v4 == &quot;b&quot;] &lt;- &quot;zb&quot;
-ie.df$v7[ie.df$v3 == &quot;z&quot; &amp; ie.df$v4 == &quot;c&quot;] &lt;- &quot;zc&quot;
-
-# sum up v1 and v2 into v7
-ie.df$v8 &lt;- ie.df$v1 + ie.df$v2</code></pre>
+ie.df$v7[ie.df$v3 == &quot;z&quot; &amp; ie.df$v4 == &quot;c&quot;] &lt;- &quot;zc&quot;</code></pre>
 </div>
-<div id="rename-variable" class="section level5">
-<h5>rename variable</h5>
+<div id="sum-up-v1-and-v2-into-v7" class="section level5">
+<h5><strong>sum up v1 and v2 into v7</strong></h5>
+<pre class="r"><code>ie.df$v8 &lt;- ie.df$v1 + ie.df$v2</code></pre>
+</div>
+</div>
+<div id="rename-variable" class="section level4">
+<h4>rename variable</h4>
 <pre class="r"><code>names(ie.df)[names(ie.df) == &quot;v8&quot;] &lt;- &quot;v1_v2&quot;
 names(ie.df)[names(ie.df) == &quot;v7&quot;] &lt;- &quot;v3_v4&quot;
 names(ie.df)[names(ie.df) == &quot;v6&quot;] &lt;- &quot;v1_level&quot;</code></pre>
 </div>
-<div id="label-variable-values" class="section level5">
-<h5>label variable values</h5>
+<div id="label-variable-values" class="section level4">
+<h4>label variable values</h4>
 <pre class="r"><code>levels(ie.df$v1_level) &lt;- c(&quot;lowest&quot;, &quot;low&quot;, &quot;high&quot;, &quot;highest&quot;)</code></pre>
 </div>
 </div>
+<div id="section-1" class="section level3 unnumbered">
+<h3 class="unnumbered"></h3>
+</div>
 <div id="univariate-analysis" class="section level3 tabset">
 <h3 class="tabset"><strong>Univariate Analysis</strong></h3>
-<div id="categorical-variables" class="section level5">
-<h5><strong>Categorical Variables</strong></h5>
+<p><font size = "5"><strong>Univariate Analysis</strong></font></p>
+<div id="categorical-variables" class="section level4">
+<h4><strong>Categorical Variables</strong></h4>
+<div id="frequency" class="section level5">
+<h5><strong>frequency</strong></h5>
 <pre class="r"><code># frequency
 #library(descr)
 freq(as.ordered(ie.df$v3_v4))</code></pre>
-<p><img src="translation_syntax_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="translation_syntax_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <pre><code>## as.ordered(ie.df$v3_v4) 
 ##       Frequency Percent Valid Percent Cum Percent
-## xa            5       5         8.621       8.621
-## xb            3       3         5.172      13.793
-## xc            6       6        10.345      24.138
-## ya           13      13        22.414      46.552
-## yb           10      10        17.241      63.793
-## yc            3       3         5.172      68.966
-## za            7       7        12.069      81.034
-## zb            5       5         8.621      89.655
-## zc            6       6        10.345     100.000
-## NA&#39;s         42      42                          
+## xa           10      10        17.544       17.54
+## xb            3       3         5.263       22.81
+## xc            9       9        15.789       38.60
+## ya            8       8        14.035       52.63
+## yb            5       5         8.772       61.40
+## yc            5       5         8.772       70.18
+## za            5       5         8.772       78.95
+## zb            6       6        10.526       89.47
+## zc            6       6        10.526      100.00
+## NA&#39;s         43      43                          
 ## Total       100     100       100.000</code></pre>
-<pre class="r"><code># frequency barplot
-#library(ggplot2)
+</div>
+<div id="frequency-bar-plot-w.-ggplot" class="section level5">
+<h5><strong>frequency bar plot w. ggplot</strong></h5>
+<pre class="r"><code>#library(ggplot2)
 ggplot(data = na.omit(ie.df)) + # na.omit() removes any observations containing NA
   geom_bar(aes(x = v3_v4)) +
   ggtitle(&quot;v3_v4 frequency barplot&quot;)</code></pre>
-<p><img src="translation_syntax_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<p><img src="translation_syntax_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
-<div id="numeric-variables" class="section level5">
-<h5><strong>Numeric Variables</strong></h5>
-<pre class="r"><code># mean and standard deviation
-mean(ie.df$v1_v2, na.rm = T)</code></pre>
-<pre><code>## [1] 14.90132</code></pre>
+</div>
+<div id="numeric-variables" class="section level4">
+<h4><strong>Numeric Variables</strong></h4>
+<div id="mean" class="section level5">
+<h5><strong>mean</strong></h5>
+<pre class="r"><code>mean(ie.df$v1_v2, na.rm = T)</code></pre>
+<pre><code>## [1] 14.34844</code></pre>
+</div>
+<div id="standard-deviation" class="section level5">
+<h5><strong>standard deviation</strong></h5>
 <pre class="r"><code>sd(ie.df$v1_v2, na.rm = T)</code></pre>
-<pre><code>## [1] 2.807923</code></pre>
-<pre class="r"><code># histogram
-ggplot(data = ie.df)+
+<pre><code>## [1] 3.215754</code></pre>
+</div>
+<div id="histogram-w.-ggplot" class="section level5">
+<h5><strong>histogram w. ggplot</strong></h5>
+<pre class="r"><code>ggplot(data = ie.df)+
   geom_histogram(aes(x = v1_v2))+
   ggtitle(&quot;v1_v2 histogram&quot;)</code></pre>
-<p><img src="translation_syntax_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="translation_syntax_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 </div>
+</div>
+</div>
+<div id="section-2" class="section level3 unnumbered">
+<h3 class="unnumbered"></h3>
 </div>
 <div id="bivariate-analysis" class="section level3 tabset">
 <h3 class="tabset"><strong>Bivariate Analysis</strong></h3>
-<div id="categorical-categorical-crosstabs" class="section level5">
-<h5><strong>Categorical-Categorical</strong> (crosstabs)</h5>
-<pre class="r"><code># crosstabs
-table(ie.df$v3, ie.df$v4)</code></pre>
+<div id="bivariate-analysis-1" class="section level5">
+<h5><font size = "5"><strong>Bivariate Analysis</strong></font></h5>
+</div>
+<div id="categorical-categorical-crosstabs" class="section level4">
+<h4><strong>Categorical-Categorical</strong> (crosstabs)</h4>
+<div id="crosstabs" class="section level5 tabset">
+<h5 class="tabset"><strong>crosstabs</strong></h5>
+<pre class="r"><code>table(ie.df$v3, ie.df$v4)</code></pre>
 <pre><code>##    
 ##      a  b  c
-##   x  5  3  6
-##   y 13 10  3
-##   z  7  5  6</code></pre>
+##   x 10  3  9
+##   y  8  5  5
+##   z  5  6  6</code></pre>
+<div id="column-proportions" class="section level6">
+<h6><strong>column proportions</strong></h6>
 <pre class="r"><code>prop.table(table(ie.df$v3, ie.df$v4), 2) # col proportions</code></pre>
 <pre><code>##    
 ##             a         b         c
-##   x 0.2000000 0.1666667 0.4000000
-##   y 0.5200000 0.5555556 0.2000000
-##   z 0.2800000 0.2777778 0.4000000</code></pre>
+##   x 0.4347826 0.2142857 0.4500000
+##   y 0.3478261 0.3571429 0.2500000
+##   z 0.2173913 0.4285714 0.3000000</code></pre>
+</div>
+<div id="row-proportions" class="section level6">
+<h6><strong>row proportions</strong></h6>
 <pre class="r"><code>prop.table(table(ie.df$v3, ie.df$v4), 1) # row proportions</code></pre>
 <pre><code>##    
 ##             a         b         c
-##   x 0.3571429 0.2142857 0.4285714
-##   y 0.5000000 0.3846154 0.1153846
-##   z 0.3888889 0.2777778 0.3333333</code></pre>
+##   x 0.4545455 0.1363636 0.4090909
+##   y 0.4444444 0.2777778 0.2777778
+##   z 0.2941176 0.3529412 0.3529412</code></pre>
+</div>
+<div id="cell-proportions" class="section level6">
+<h6><strong>cell proportions</strong></h6>
 <pre class="r"><code>prop.table(table(ie.df$v3, ie.df$v4)) # cell proportions</code></pre>
 <pre><code>##    
 ##              a          b          c
-##   x 0.08620690 0.05172414 0.10344828
-##   y 0.22413793 0.17241379 0.05172414
-##   z 0.12068966 0.08620690 0.10344828</code></pre>
+##   x 0.17543860 0.05263158 0.15789474
+##   y 0.14035088 0.08771930 0.08771930
+##   z 0.08771930 0.10526316 0.10526316</code></pre>
+</div>
+</div>
+<div id="graphs" class="section level5 tabset">
+<h5 class="tabset"><strong>Graphs </strong></h5>
+<div id="for-binary-categorical-response" class="section level6">
+<h6><strong>for binary categorical response</strong></h6>
 <pre class="r"><code># for binary categorical response
 graph_data &lt;- data.frame(v3 = na.omit(ie.df)$v3, 
                          v5 = ifelse(na.omit(ie.df)$v5 == &quot;p&quot;, 0, 1))
@@ -621,7 +600,10 @@ ggplot(data = graph_data)+
   stat_summary(aes(x=v3, y = v5), fun = &quot;mean&quot;, geom = &quot;bar&quot;)+
   ylab(&quot;poriton of responses that are &#39;1 (aka. q)&#39;&quot;)+
   ggtitle(&quot;percentage of q within v3 groups&quot;)</code></pre>
-<p><img src="translation_syntax_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="translation_syntax_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+</div>
+<div id="for-multi-level-categorical-responses" class="section level6">
+<h6><strong>for multi-level categorical responses</strong></h6>
 <pre class="r"><code># stacked barplot for mutli-level categorical responses
 graph_data &lt;- data.frame(v4 = c(rep(&quot;a&quot;, 3), rep(&quot;b&quot;, 3), rep(&quot;c&quot;, 3)),
                          v3 = rep(c(&quot;x&quot;, &quot;y&quot;, &quot;z&quot;), 3),
@@ -631,120 +613,144 @@ ggplot(data = graph_data, aes(fill = v4, x = v3, y = value))+
   geom_bar(position = &quot;stack&quot;, stat = &quot;identity&quot;)+
   ylab(&quot;number of observations&quot;)+
   ggtitle(&quot;number of subjects at each response level within each group&quot;)</code></pre>
-<p><img src="translation_syntax_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
+<p><img src="translation_syntax_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 </div>
-<div id="numeric-categorical-means-by-group" class="section level5">
-<h5><strong>Numeric-Categorical</strong> (means by group)</h5>
-<pre class="r"><code># mean by group
-by(ie.df$v1, ie.df$v3_v4, mean, na.rm = T)</code></pre>
+</div>
+</div>
+<div id="numeric-categorical" class="section level4">
+<h4><strong>Numeric-Categorical</strong></h4>
+<div id="stats-by-group" class="section level5 tabset">
+<h5 class="tabset"><strong>stats by group</strong></h5>
+<div id="mean-1" class="section level6">
+<h6><strong>Mean</strong></h6>
+<pre class="r"><code>by(ie.df$v1, ie.df$v3_v4, mean, na.rm = T)</code></pre>
 <pre><code>## ie.df$v3_v4: xa
-## [1] 4.084536
-## ---------------------------------------------------------------------- 
+## [1] 4.155114
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: xb
-## [1] 4.413561
-## ---------------------------------------------------------------------- 
+## [1] 3.040754
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: xc
-## [1] 3.081197
-## ---------------------------------------------------------------------- 
+## [1] 2.774313
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: ya
-## [1] 3.860493
-## ---------------------------------------------------------------------- 
+## [1] 2.666477
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: yb
-## [1] 4.510067
-## ---------------------------------------------------------------------- 
+## [1] 3.715273
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: yc
-## [1] 1.257789
-## ---------------------------------------------------------------------- 
+## [1] 3.667825
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: za
-## [1] 2.454615
-## ---------------------------------------------------------------------- 
+## [1] 1.845604
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: zb
-## [1] 4.78509
-## ---------------------------------------------------------------------- 
+## [1] 3.560573
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: zc
-## [1] 5.157532</code></pre>
-<pre class="r"><code># standard deviation by group
-by(ie.df$v1, ie.df$v3_v4, sd, na.rm = T)</code></pre>
+## [1] 5.418733</code></pre>
+</div>
+<div id="standard-deviation-1" class="section level6">
+<h6><strong>standard deviation</strong></h6>
+<pre class="r"><code>by(ie.df$v1, ie.df$v3_v4, sd, na.rm = T)</code></pre>
 <pre><code>## ie.df$v3_v4: xa
-## [1] 2.548148
-## ---------------------------------------------------------------------- 
+## [1] 2.529218
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: xb
-## [1] 2.422217
-## ---------------------------------------------------------------------- 
+## [1] 2.501078
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: xc
-## [1] 2.357065
-## ---------------------------------------------------------------------- 
+## [1] 1.59189
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: ya
-## [1] 1.89089
-## ---------------------------------------------------------------------- 
+## [1] 2.314056
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: yb
-## [1] 2.323614
-## ---------------------------------------------------------------------- 
+## [1] 2.234965
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: yc
-## [1] 0.9518429
-## ---------------------------------------------------------------------- 
+## [1] 3.158564
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: za
-## [1] 2.259573
-## ---------------------------------------------------------------------- 
+## [1] 1.204694
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: zb
-## [1] 1.275543
-## ---------------------------------------------------------------------- 
+## [1] 2.644358
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: zc
-## [1] 1.424048</code></pre>
-<pre class="r"><code># number of observations in group
-by(ie.df$v1, ie.df$v3_v4, length)</code></pre>
+## [1] 2.122795</code></pre>
+</div>
+<div id="number-of-observations" class="section level6">
+<h6><strong>number of observations</strong></h6>
+<pre class="r"><code>by(ie.df$v1, ie.df$v3_v4, length)</code></pre>
 <pre><code>## ie.df$v3_v4: xa
-## [1] 5
-## ---------------------------------------------------------------------- 
-## ie.df$v3_v4: xb
-## [1] 3
-## ---------------------------------------------------------------------- 
-## ie.df$v3_v4: xc
-## [1] 6
-## ---------------------------------------------------------------------- 
-## ie.df$v3_v4: ya
-## [1] 13
-## ---------------------------------------------------------------------- 
-## ie.df$v3_v4: yb
 ## [1] 10
-## ---------------------------------------------------------------------- 
-## ie.df$v3_v4: yc
+## ------------------------------------------------------------ 
+## ie.df$v3_v4: xb
 ## [1] 3
-## ---------------------------------------------------------------------- 
-## ie.df$v3_v4: za
-## [1] 7
-## ---------------------------------------------------------------------- 
-## ie.df$v3_v4: zb
+## ------------------------------------------------------------ 
+## ie.df$v3_v4: xc
+## [1] 9
+## ------------------------------------------------------------ 
+## ie.df$v3_v4: ya
+## [1] 8
+## ------------------------------------------------------------ 
+## ie.df$v3_v4: yb
 ## [1] 5
-## ---------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
+## ie.df$v3_v4: yc
+## [1] 5
+## ------------------------------------------------------------ 
+## ie.df$v3_v4: za
+## [1] 5
+## ------------------------------------------------------------ 
+## ie.df$v3_v4: zb
+## [1] 6
+## ------------------------------------------------------------ 
 ## ie.df$v3_v4: zc
 ## [1] 6</code></pre>
-<pre class="r"><code># barplot
-ggplot(data = na.omit(ie.df))+
+</div>
+</div>
+<div id="graph" class="section level5 tabset">
+<h5 class="tabset"><strong>Graph</strong></h5>
+<div id="barplot" class="section level6">
+<h6><strong>barplot</strong></h6>
+<pre class="r"><code>ggplot(data = na.omit(ie.df))+
   stat_summary(aes(x = v3_v4, y = v1), fun = &quot;mean&quot;, geom = &quot;bar&quot;)+
   ggtitle(&quot;mean barplot&quot;)</code></pre>
-<p><img src="translation_syntax_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<pre class="r"><code># boxplot
-ggplot(data = na.omit(ie.df))+
+<p><img src="translation_syntax_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+</div>
+<div id="boxplot" class="section level6">
+<h6><strong>boxplot</strong></h6>
+<pre class="r"><code>ggplot(data = na.omit(ie.df))+
   geom_boxplot(aes(x = v3_v4, y = v1))+
   ggtitle(&quot;boxplot&quot;)</code></pre>
-<p><img src="translation_syntax_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
+<p><img src="translation_syntax_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 </div>
-<div id="numeric-numeric" class="section level5">
-<h5><strong>Numeric-Numeric</strong></h5>
+</div>
+</div>
+<div id="numeric-numeric" class="section level4">
+<h4><strong>Numeric-Numeric</strong></h4>
 <pre class="r"><code>ggplot(data = na.omit(ie.df), aes(x = v1, y = v1_v2))+
   geom_point()+
   geom_smooth(method = &quot;lm&quot;)+
   ggtitle(&quot;Correlation between v1_v2 and v1&quot;)</code></pre>
-<p><img src="translation_syntax_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="translation_syntax_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 </div>
+</div>
+<div id="section-3" class="section level3 unnumbered">
+<h3 class="unnumbered"></h3>
 </div>
 <div id="multivariate-analysis-bivariate-by-subpopulation" class="section level3 tabset">
 <h3 class="tabset"><strong>Multivariate Analysis</strong> (Bivariate by subpopulation)</h3>
-<div id="categorical-categorical" class="section level5">
-<h5><strong>Categorical-Categorical</strong></h5>
-<pre class="r"><code># for binary categorical response
-graph_data &lt;- data.frame(v3 = na.omit(ie.df)$v3, 
+<p><font size = "5"><strong>Multivariate Analysis</strong></font></p>
+<div id="categorical-categorical" class="section level4 tabset">
+<h4 class="tabset"><strong>Categorical-Categorical</strong></h4>
+<p><font size = "4"><strong>C <span class="math inline">\(\Rightarrow\)</span> C</strong></font></p>
+<div id="binary-categorical-response" class="section level5">
+<h5><strong>binary categorical response</strong></h5>
+<pre class="r"><code>graph_data &lt;- data.frame(v3 = na.omit(ie.df)$v3, 
                          v5 = ifelse(na.omit(ie.df)$v5 == &quot;p&quot;, 0, 1),
                          v4 = na.omit(ie.df)$v4)
 ggplot(data = graph_data)+
@@ -752,9 +758,11 @@ ggplot(data = graph_data)+
   facet_grid(.~v4)+
   ylab(&quot;poriton of responses that are &#39;1 (aka. q)&#39;&quot;)+
   ggtitle(&quot;percentage of q within v3 groups&quot;)</code></pre>
-<p><img src="translation_syntax_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<pre class="r"><code># stacked barplot for mutli-level categorical responses
-graph_data &lt;- data.frame(v4 = rep(c(rep(&quot;a&quot;, 3), rep(&quot;b&quot;, 3), rep(&quot;c&quot;, 3)), 2),
+<p><img src="translation_syntax_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+</div>
+<div id="multi-level-categorical-response" class="section level5">
+<h5><strong>multi-level categorical response</strong></h5>
+<pre class="r"><code>graph_data &lt;- data.frame(v4 = rep(c(rep(&quot;a&quot;, 3), rep(&quot;b&quot;, 3), rep(&quot;c&quot;, 3)), 2),
                          v3 = rep(c(&quot;x&quot;, &quot;y&quot;, &quot;z&quot;), 6),
                          value = c(as.numeric(table(ie.df[ie.df$v5 == &quot;p&quot;,]$v3, ie.df[ie.df$v5 == &quot;p&quot;,]$v4)), 
                                    as.numeric(table(ie.df[ie.df$v5 == &quot;q&quot;,]$v3, ie.df[ie.df$v5 == &quot;q&quot;,]$v4))),
@@ -765,79 +773,93 @@ ggplot(data = graph_data)+
   facet_grid(.~v5)+
   ylab(&quot;number of observations&quot;)+
   ggtitle(&quot;number of subjects at each response level within each group&quot;)</code></pre>
-<p><img src="translation_syntax_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
+<p><img src="translation_syntax_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 </div>
-<div id="numeric-categorical" class="section level5">
-<h5><strong>Numeric-Categorical</strong></h5>
+</div>
+<div id="numeric-categorical-1" class="section level4">
+<h4><strong>Numeric-Categorical</strong></h4>
+<p><font size = "4"><strong>C <span class="math inline">\(\Rightarrow\)</span> N</strong></font></p>
+<div id="mean-by-group" class="section level5">
+<h5><strong>mean by group</strong></h5>
 <pre class="r"><code># mean by group 
 ftable(by(ie.df$v1_v2, list(ie.df$v3_v4, ie.df$v5), mean, na.rm = T))</code></pre>
 <pre><code>##             p         q
 ##                        
-## xa         NA 15.826225
-## xb         NA 16.554038
-## xc  12.916570 13.569603
-## ya  15.715248 13.525809
-## yb  16.631962 16.833382
-## yc  12.460759  9.431952
-## za  11.513507 16.204291
-## zb  17.477339 14.364868
-## zc  19.020543 15.861103</code></pre>
-<pre class="r"><code># boxplot
-ggplot(data = na.omit(ie.df)) +
+## xa  13.025473 16.163934
+## xb         NA 15.390746
+## xc  12.632911 17.037734
+## ya  16.477057 14.131926
+## yb  17.126800        NA
+## yc  13.622330        NA
+## za   8.478775 10.907427
+## zb  14.367348 11.991702
+## zc  15.434848 16.638588</code></pre>
+</div>
+<div id="boxplot-1" class="section level5">
+<h5><strong>boxplot</strong></h5>
+<pre class="r"><code>ggplot(data = na.omit(ie.df)) +
   geom_boxplot(aes(x = v3_v4, y = v1_v2))+
   facet_grid(.~v5)+
   ggtitle(&quot;&quot;)</code></pre>
-<p><img src="translation_syntax_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="translation_syntax_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 </div>
-<div id="numeric-numeric-1" class="section level5">
-<h5><strong>Numeric-Numeric</strong></h5>
+</div>
+<div id="numeric-numeric-1" class="section level4">
+<h4><strong>Numeric-Numeric</strong></h4>
+<p><font size = "4"><strong>N <span class="math inline">\(\Rightarrow\)</span> N</strong></font></p>
 <pre class="r"><code>ggplot(data = na.omit(ie.df), aes(x = v1, y = v1_v2))+
   geom_point()+
   geom_smooth(method = &quot;lm&quot;)+
   facet_grid(.~v5)</code></pre>
-<p><img src="translation_syntax_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="translation_syntax_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 </div>
+</div>
+<div id="section-4" class="section level3 unnumbered">
+<h3 class="unnumbered"></h3>
 </div>
 <div id="hypothesis-testing" class="section level3 tabset">
 <h3 class="tabset"><strong>Hypothesis Testing</strong></h3>
-<div id="categorical-categorical-chi2" class="section level4">
-<h4><strong>Categorical-Categorical (<span class="math inline">\(\chi^2\)</span>)</strong></h4>
+<p><font size = "5"><strong>Hypothesis Testing</strong></font></p>
+<div id="categorical-categorical-chi2" class="section level4 tabset">
+<h4 class="tabset"><strong>Categorical-Categorical (<span class="math inline">\(\chi^2\)</span>)</strong></h4>
+<p><font size = "4"><strong><span class="math inline">\(\chi^2\)</span> Test</strong> (C <span class="math inline">\(\Rightarrow\)</span> C)</font></p>
 <div id="bivariate" class="section level5">
-<h5>Bivariate</h5>
+<h5><strong>Bivariate</strong></h5>
+<p><font size = "3"> <strong>chi-square</strong></font></p>
 <pre class="r"><code># chisquare
 chisq.test(na.omit(ie.df)$v4, na.omit(ie.df)$v3)</code></pre>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  na.omit(ie.df)$v4 and na.omit(ie.df)$v3
-## X-squared = 5.8041, df = 4, p-value = 0.2143</code></pre>
-<pre class="r"><code># chisquare cell counts
-chisq.test(na.omit(ie.df)$v4, na.omit(ie.df)$v3)$observed</code></pre>
+## X-squared = 5.9184, df = 4, p-value = 0.2053</code></pre>
+<p><font size = "3"> <strong>chi-square cell counts</strong></font></p>
+<pre class="r"><code>chisq.test(na.omit(ie.df)$v4, na.omit(ie.df)$v3)$observed</code></pre>
 <pre><code>##                  na.omit(ie.df)$v3
 ## na.omit(ie.df)$v4 x y z
-##                 a 2 9 5
-##                 b 2 9 3
-##                 c 5 3 4</code></pre>
-<pre class="r"><code># posthoc (for more than two levels)
-source(&quot;https://raw.githubusercontent.com/PassionDrivenStatistics/R/master/ChiSquarePostHoc.R&quot;)
+##                 a 9 7 3
+##                 b 1 3 5
+##                 c 7 5 4</code></pre>
+<p><font size = "3"> <strong>posthoc</strong> (for more than two levels)</font></p>
+<pre class="r"><code>source(&quot;https://raw.githubusercontent.com/PassionDrivenStatistics/R/master/ChiSquarePostHoc.R&quot;)
 chisq.post.hoc(chisq.test(na.omit(ie.df)$v4, na.omit(ie.df)$v3)$observed,
                popsInRows = F,
                control = &quot;bonferroni&quot;)</code></pre>
 <pre><code>## Adjusted p-values used the bonferroni method.</code></pre>
 <pre><code>##   comparison  raw.p  adj.p
-## 1    x vs. y 0.1001 0.3003
-## 2    x vs. z 0.6499 1.0000
-## 3    y vs. z 0.3818 1.0000</code></pre>
+## 1    x vs. y 0.6284 1.0000
+## 2    x vs. z 0.0802 0.2405
+## 3    y vs. z 0.3950 1.0000</code></pre>
 <pre class="r"><code># Pearson Residuals
 chisq.test(na.omit(ie.df)$v4, na.omit(ie.df)$v3)$residuals</code></pre>
 <pre><code>##                  na.omit(ie.df)$v3
-## na.omit(ie.df)$v4          x          y          z
-##                 a -0.7715167  0.3535534  0.2004459
-##                 b -0.5773503  0.7559289 -0.5000000
-##                 c  1.5144804 -1.2247449  0.3086067</code></pre>
+## na.omit(ie.df)$v4           x           y           z
+##                 a  0.61234371  0.20538989 -0.95846768
+##                 b -1.32847824 -0.03892495  1.62472479
+##                 c  0.32907259 -0.19462474 -0.17407766</code></pre>
 </div>
 <div id="multivariate" class="section level5">
-<h5>Multivariate</h5>
+<h5><strong>Multivariate</strong></h5>
 <pre class="r"><code>by(na.omit(ie.df), na.omit(ie.df)$v5, function(x) list(chisq.test(x$v4, x$v3),
                                                        chisq.test(x$v4, x$v3)$observed,
                                                        prop.table(chisq.test(x$v4, x$v3)$observed, 2)))</code></pre>
@@ -847,107 +869,106 @@ chisq.test(na.omit(ie.df)$v4, na.omit(ie.df)$v3)$residuals</code></pre>
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  x$v4 and x$v3
-## X-squared = 9.4788, df = 4, p-value = 0.05018
+## X-squared = 3.9677, df = 4, p-value = 0.4104
 ## 
 ## 
 ## [[2]]
 ##     x$v3
 ## x$v4 x y z
-##    a 0 4 1
-##    b 0 6 1
-##    c 3 1 1
+##    a 4 5 1
+##    b 0 3 2
+##    c 5 5 2
 ## 
 ## [[3]]
 ##     x$v3
-## x$v4          x          y          z
-##    a 0.00000000 0.36363636 0.33333333
-##    b 0.00000000 0.54545455 0.33333333
-##    c 1.00000000 0.09090909 0.33333333
+## x$v4         x         y         z
+##    a 0.4444444 0.3846154 0.2000000
+##    b 0.0000000 0.2307692 0.4000000
+##    c 0.5555556 0.3846154 0.4000000
 ## 
-## ---------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## na.omit(ie.df)$v5: q
 ## [[1]]
 ## 
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  x$v4 and x$v3
-## X-squared = 0.80087, df = 4, p-value = 0.9383
+## X-squared = 4.309, df = 4, p-value = 0.3658
 ## 
 ## 
 ## [[2]]
 ##     x$v3
 ## x$v4 x y z
-##    a 2 5 4
-##    b 2 3 2
-##    c 2 2 3
+##    a 5 2 2
+##    b 1 0 3
+##    c 2 0 2
 ## 
 ## [[3]]
 ##     x$v3
 ## x$v4         x         y         z
-##    a 0.3333333 0.5000000 0.4444444
-##    b 0.3333333 0.3000000 0.2222222
-##    c 0.3333333 0.2000000 0.3333333</code></pre>
+##    a 0.6250000 1.0000000 0.2857143
+##    b 0.1250000 0.0000000 0.4285714
+##    c 0.2500000 0.0000000 0.2857143</code></pre>
 </div>
 </div>
-<div id="numeric-categorical-anova" class="section level4">
-<h4><strong>Numeric-Categorical (ANOVA)</strong></h4>
+<div id="numeric-categorical-anova" class="section level4 tabset">
+<h4 class="tabset"><strong>Numeric-Categorical (ANOVA)</strong></h4>
+<p><font size = "4"><strong>ANOVA Test</strong> (C <span class="math inline">\(\Rightarrow\)</span> N)</font></p>
 <div id="bivariate-1" class="section level5">
-<h5>Bivariate</h5>
-<pre class="r"><code># anova
-summary(aov(v1_v2 ~ v3_v4, data = na.omit(ie.df)))</code></pre>
-<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
-## v3_v4        8  125.0  15.629   2.367  0.039 *
-## Residuals   33  217.9   6.603                 
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<pre class="r"><code># posthoc
-TukeyHSD(aov(v1_v2 ~ v3_v4, data = na.omit(ie.df)))</code></pre>
+<h5><strong>Bivariate</strong></h5>
+<p><font size = "3"> <strong>ANOVA</strong></font></p>
+<pre class="r"><code>summary(aov(v1_v2 ~ v3_v4, data = na.omit(ie.df)))</code></pre>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
+## v3_v4        8  120.0  15.005   1.571  0.169
+## Residuals   35  334.2   9.549</code></pre>
+<p><font size = "3"> <strong>posthoc</strong> (for more than two levels)</font></p>
+<pre class="r"><code>TukeyHSD(aov(v1_v2 ~ v3_v4, data = na.omit(ie.df)))</code></pre>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
 ## Fit: aov(formula = v1_v2 ~ v3_v4, data = na.omit(ie.df))
 ## 
 ## $v3_v4
-##              diff         lwr        upr     p adj
-## xb-xa  0.72781316  -7.7916857  9.2473120 0.9999983
-## xc-xa -2.64844153  -9.7763657  4.4794826 0.9431978
-## ya-xa -1.32733196  -7.9873306  5.3326667 0.9989764
-## yb-xa  0.87287693  -5.7871217  7.5328756 0.9999545
-## yc-xa -5.38467051 -13.1618734  2.3925323 0.3733022
-## za-xa -0.56009068  -7.6880148  6.5678335 0.9999991
-## zb-xa -0.42386644  -8.2010693  7.3533364 1.0000000
-## zc-xa  0.82473786  -6.5533646  8.2028403 0.9999866
-## xc-xb -3.37625469 -10.5041788  3.7516695 0.8133595
-## ya-xb -2.05514512  -8.7151437  4.6048535 0.9807152
-## yb-xb  0.14506377  -6.5149349  6.8050624 1.0000000
-## yc-xb -6.11248366 -13.8896865  1.6647192 0.2225771
-## za-xb -1.28790384  -8.4158280  5.8400203 0.9994966
-## zb-xb -1.15167960  -8.9288824  6.6255232 0.9998851
-## zc-xb  0.09692470  -7.2811777  7.4750271 1.0000000
-## ya-xc  1.32110957  -3.4308399  6.0730590 0.9900103
-## yb-xc  3.52131846  -1.2306310  8.2732679 0.2887787
-## yc-xc -2.73622897  -8.9579912  3.4855333 0.8662291
-## za-xc  2.08835086  -3.2998533  7.4765550 0.9287508
-## zb-xc  2.22457510  -3.9971872  8.4463374 0.9540878
-## zc-xc  3.47317939  -2.2418742  9.1882330 0.5445011
-## yb-ya  2.20020889  -1.8159214  6.2163392 0.6715917
-## yc-ya -4.05733854  -9.7370045  1.6223274 0.3335315
-## za-ya  0.76724128  -3.9847082  5.5191907 0.9997805
-## zb-ya  0.90346552  -4.7762004  6.5831314 0.9998035
-## zc-ya  2.15206982  -2.9675118  7.2716515 0.8922641
-## yc-yb -6.25754743 -11.9372133 -0.5778815 0.0219839
-## za-yb -1.43296761  -6.1849170  3.3189818 0.9832749
-## zb-yb -1.29674337  -6.9764093  4.3829225 0.9973319
-## zc-yb -0.04813907  -5.1677207  5.0714426 1.0000000
-## za-yc  4.82457983  -1.3971825 11.0463421 0.2370142
-## zb-yc  4.96080407  -1.9953376 11.9169458 0.3356503
-## zc-yc  6.20940836  -0.2974664 12.7162831 0.0708729
-## zb-za  0.13622424  -6.0855380  6.3579865 1.0000000
-## zc-za  1.38482854  -4.3302250  7.0998821 0.9959864
-## zc-zb  1.24860430  -5.2582704  7.7554790 0.9992206</code></pre>
+##             diff        lwr       upr     p adj
+## xb-xa  0.6216840 -10.136849 11.380217 0.9999999
+## xc-xa -0.8776308  -6.021193  4.265932 0.9996834
+## ya-xa  1.0379576  -4.105605  6.181520 0.9989259
+## yb-xa  2.3577376  -4.446556  9.162031 0.9626800
+## yc-xa -1.1467328  -6.839613  4.546148 0.9989397
+## za-xa -4.6711858 -11.475479  2.133108 0.3878432
+## zb-xa -1.8271021  -7.519983  3.865778 0.9762678
+## zc-xa  1.2676557  -4.865652  7.400963 0.9987258
+## xc-xb -1.4993148 -12.410459  9.411829 0.9999376
+## ya-xb  0.4162736 -10.494870 11.327417 1.0000000
+## yb-xb  1.7360536 -10.049329 13.521436 0.9998944
+## yc-xb -1.7684168 -12.949012  9.412179 0.9998198
+## za-xb -5.2928698 -17.078252  6.492513 0.8555852
+## zb-xb -2.4487861 -13.629382  8.731809 0.9980800
+## zc-xb  0.6459718 -10.765176 12.057119 0.9999999
+## ya-xc  1.9155884  -3.539984  7.371160 0.9597324
+## yb-xc  3.2353684  -3.807745 10.278482 0.8399501
+## yc-xc -0.2691020  -6.245382  5.707178 1.0000000
+## za-xc -3.7935550 -10.836668  3.249558 0.6948496
+## zb-xc -0.9494713  -6.925751  5.026808 0.9998137
+## zc-xc  2.1452865  -4.251939  8.542512 0.9691631
+## yb-ya  1.3197800  -5.723333  8.362893 0.9993707
+## yc-ya -2.1846904  -8.160970  3.791589 0.9494643
+## za-ya -5.7091434 -12.752256  1.333970 0.1928925
+## zb-ya -2.8650597  -8.841339  3.111220 0.8070551
+## zc-ya  0.2296982  -6.167527  6.626923 1.0000000
+## yc-yb -3.5044704 -10.958201  3.949260 0.8226014
+## za-yb -7.0289234 -15.362447  1.304600 0.1560225
+## zb-yb -4.1848398 -11.638570  3.268891 0.6474699
+## zc-yb -1.0900819  -8.885380  6.705216 0.9999287
+## za-yc -3.5244530 -10.978183  3.929277 0.8181563
+## zb-yc -0.6803694  -7.135489  5.774750 0.9999919
+## zc-yc  2.4143885  -4.432300  9.261077 0.9587333
+## zb-za  2.8440836  -4.609647 10.297814 0.9361199
+## zc-za  5.9388415  -1.856456 13.734139 0.2590178
+## zc-zb  3.0947579  -3.751931  9.941446 0.8512480</code></pre>
 </div>
 <div id="multivariate-1" class="section level5">
-<h5>Multivariate</h5>
+<h5><strong>Multivariate</strong></h5>
 <pre class="r"><code>by(na.omit(ie.df), na.omit(ie.df)$v5, function(x) list(aov(v1_v2 ~ v3_v4, data = x),
                                                        summary(aov(v1_v2 ~ v3_v4, data = x)),
                                                        TukeyHSD(aov(v1_v2 ~ v3_v4, data = x))))</code></pre>
@@ -957,17 +978,17 @@ TukeyHSD(aov(v1_v2 ~ v3_v4, data = na.omit(ie.df)))</code></pre>
 ##    aov(formula = v1_v2 ~ v3_v4, data = x)
 ## 
 ## Terms:
-##                     v3_v4 Residuals
-## Sum of Squares   69.17348 113.01487
-## Deg. of Freedom         6        10
+##                    v3_v4 Residuals
+## Sum of Squares  106.8033  194.3247
+## Deg. of Freedom        7        19
 ## 
-## Residual standard error: 3.361768
+## Residual standard error: 3.198064
 ## Estimated effects may be unbalanced
 ## 
 ## [[2]]
 ##             Df Sum Sq Mean Sq F value Pr(&gt;F)
-## v3_v4        6  69.17   11.53    1.02  0.465
-## Residuals   10 113.01   11.30               
+## v3_v4        7  106.8   15.26   1.492  0.229
+## Residuals   19  194.3   10.23               
 ## 
 ## [[3]]
 ##   Tukey multiple comparisons of means
@@ -977,49 +998,54 @@ TukeyHSD(aov(v1_v2 ~ v3_v4, data = na.omit(ie.df)))</code></pre>
 ## 
 ## $v3_v4
 ##             diff        lwr       upr     p adj
-## ya-xc  2.7986781  -6.504566 12.101922 0.9175821
-## yb-xc  3.7153915  -4.897738 12.328521 0.7061876
-## yc-xc -0.4558113 -14.520994 13.609371 0.9999996
-## za-xc -1.4030634 -15.468246 12.662119 0.9997200
-## zb-xc  4.5607682  -9.504414 18.625951 0.8887296
-## zc-xc  6.1039727  -7.961210 20.169155 0.7010434
-## yb-ya  0.9167134  -6.945963  8.779389 0.9993192
-## yc-ya -3.2544893 -16.873044 10.364065 0.9702086
-## za-ya -4.2017415 -17.820296  9.416813 0.9086342
-## zb-ya  1.7620901 -11.856464 15.380644 0.9987786
-## zc-ya  3.3052946 -10.313260 16.923849 0.9679672
-## yc-yb -4.1712028 -17.327976  8.985571 0.8981366
-## za-yb -5.1184549 -18.275228  8.038318 0.7862119
-## zb-yb  0.8453767 -12.311397 14.002150 0.9999784
-## zc-yb  2.3885812 -10.768192 15.545355 0.9923892
-## za-yc -0.9472521 -18.173512 16.279008 0.9999914
-## zb-yc  5.0165795 -12.209681 22.242839 0.9279970
-## zc-yc  6.5597839 -10.666476 23.786044 0.8008177
-## zb-za  5.9638316 -11.262428 23.190092 0.8574551
-## zc-za  7.5070361  -9.719224 24.733296 0.6974660
-## zc-zb  1.5432045 -15.683055 18.769464 0.9998493
+## xc-xa -0.3925623  -7.665509  6.880384 0.9999995
+## ya-xa  3.4515844  -3.821362 10.724531 0.7398966
+## yb-xa  4.1013270  -4.179287 12.381941 0.6996295
+## yc-xa  0.5968566  -6.676090  7.869803 0.9999907
+## za-xa -4.5466978 -16.668275  7.574880 0.8984270
+## zb-xa  1.3418746  -8.047459 10.731208 0.9996104
+## zc-xa  2.4093754  -6.979958 11.798709 0.9854931
+## ya-xc  3.8441467  -3.012853 10.701146 0.5664139
+## yb-xc  4.4938893  -3.423892 12.411670 0.5521563
+## yc-xc  0.9894189  -5.867581  7.846419 0.9995852
+## za-xc -4.1541354 -16.030807  7.722536 0.9264638
+## zb-xc  1.7344369  -7.336521 10.805395 0.9974908
+## zc-xc  2.8019377  -6.269020 11.872896 0.9603178
+## yb-ya  0.6497426  -7.268039  8.567524 0.9999907
+## yc-ya -2.8547278  -9.711727  4.002272 0.8412818
+## za-ya -7.9982822 -19.874954  3.878390 0.3508862
+## zb-ya -2.1097098 -11.180668  6.961248 0.9917789
+## zc-ya -1.0422090 -10.113167  8.028749 0.9999084
+## yc-yb -3.5044704 -11.422252  4.413311 0.7981185
+## za-yb -8.6480248 -21.167136  3.871086 0.3223180
+## zb-yb -2.7594524 -12.656679  7.137774 0.9769799
+## zc-yb -1.6919516 -11.589178  8.205275 0.9987601
+## za-yc -5.1435544 -17.020226  6.733117 0.8143102
+## zb-yc  0.7450180  -8.325940  9.815976 0.9999906
+## zc-yc  1.8125188  -7.258439 10.883477 0.9967052
+## zb-za  5.8885723  -7.389950 19.167095 0.7966312
+## zc-za  6.9560732  -6.322449 20.234596 0.6419967
+## zc-zb  1.0675008  -9.774368 11.909369 0.9999677
 ## 
 ## 
-## ---------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## na.omit(ie.df)$v5: q
 ## [[1]]
 ## Call:
 ##    aov(formula = v1_v2 ~ v3_v4, data = x)
 ## 
 ## Terms:
-##                     v3_v4 Residuals
-## Sum of Squares  101.08556  55.98262
-## Deg. of Freedom         8        16
+##                    v3_v4 Residuals
+## Sum of Squares  81.05144  70.28658
+## Deg. of Freedom        6        10
 ## 
-## Residual standard error: 1.870538
+## Residual standard error: 2.651162
 ## Estimated effects may be unbalanced
 ## 
 ## [[2]]
-##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
-## v3_v4        8 101.09  12.636   3.611 0.0138 *
-## Residuals   16  55.98   3.499                 
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##             Df Sum Sq Mean Sq F value Pr(&gt;F)
+## v3_v4        6  81.05  13.509   1.922  0.172
+## Residuals   10  70.29   7.029               
 ## 
 ## [[3]]
 ##   Tukey multiple comparisons of means
@@ -1028,195 +1054,195 @@ TukeyHSD(aov(v1_v2 ~ v3_v4, data = na.omit(ie.df)))</code></pre>
 ## Fit: aov(formula = v1_v2 ~ v3_v4, data = x)
 ## 
 ## $v3_v4
-##              diff         lwr        upr     p adj
-## xb-xa  0.72781316  -5.9265513  7.3821776 0.9999739
-## xc-xa -2.25662198  -8.9109864  4.3977425 0.9435638
-## ya-xa -2.30041633  -7.8678571  3.2670244 0.8536095
-## yb-xa  1.00715691  -5.0674190  7.0817328 0.9994214
-## yc-xa -6.39427284 -13.0486373  0.2600916 0.0646466
-## za-xa  0.37806615  -5.3847825  6.1409148 0.9999995
-## zb-xa -1.46135646  -8.1157209  5.1930080 0.9959062
-## zc-xa  0.03487778  -6.0396981  6.1094536 1.0000000
-## xc-xb -2.98443514  -9.6387996  3.6699293 0.7943132
-## ya-xb -3.02822949  -8.5956702  2.5392113 0.6022852
-## yb-xb  0.27934375  -5.7952321  6.3539196 1.0000000
-## yc-xb -7.12208600 -13.7764504 -0.4677215 0.0312308
-## za-xb -0.34974701  -6.1125957  5.4131016 0.9999997
-## zb-xb -2.18916962  -8.8435341  4.4651948 0.9519916
-## zc-xb -0.69293538  -6.7675112  5.3816405 0.9999641
-## ya-xc -0.04379434  -5.6112351  5.5236464 1.0000000
-## yb-xc  3.26377889  -2.8107970  9.3383548 0.6163067
-## yc-xc -4.13765085 -10.7920153  2.5167136 0.4422700
-## za-xc  2.63468813  -3.1281605  8.3975368 0.7783838
-## zb-xc  0.79526552  -5.8590989  7.4496300 0.9999488
-## zc-xc  2.29149977  -3.7830761  8.3660756 0.9035190
-## yb-ya  3.30757324  -1.5520875  8.1672339 0.3357389
-## yc-ya -4.09385651  -9.6612972  1.4735842 0.2527990
-## za-ya  2.67848247  -1.7854009  7.1423659 0.4854443
-## zb-ya  0.83905986  -4.7283809  6.4065006 0.9997110
-## zc-ya  2.33529411  -2.5243666  7.1949548 0.7334752
-## yc-yb -7.40142975 -13.4760056 -1.3268539 0.0113440
-## za-yb -0.62909076  -5.7114456  4.4532640 0.9999333
-## zb-yb -2.46851337  -8.5430892  3.6060625 0.8639461
-## zc-yb -0.97227913  -6.4055450  4.4609867 0.9990016
-## za-yc  6.77233898   1.0094903 12.5351876 0.0152727
-## zb-yc  4.93291637  -1.7214481 11.5872808 0.2447257
-## zc-yc  6.42915062   0.3545748 12.5037265 0.0338466
-## zb-za -1.83942261  -7.6022713  3.9234261 0.9592869
-## zc-za -0.34318836  -5.4255432  4.7391664 0.9999994
-## zc-zb  1.49623425  -4.5783416  7.5708101 0.9913374</code></pre>
+##             diff        lwr       upr     p adj
+## xb-xa -0.7731875 -11.296077  9.749702 0.9999525
+## xc-xa  0.8738000  -7.163190  8.910790 0.9995419
+## ya-xa -2.0320075 -10.068997  6.004982 0.9613100
+## za-xa -5.2565066 -13.293496  2.780483 0.3007662
+## zb-xa -4.1722319 -11.187492  2.843028 0.3922880
+## zc-xa  0.4746540  -7.562336  8.511644 0.9999869
+## xc-xb  1.6469875 -10.117961 13.411936 0.9981109
+## ya-xb -1.2588200 -13.023768 10.506128 0.9995818
+## za-xb -4.4833191 -16.248267  7.281629 0.8003398
+## zb-xb -3.3990444 -14.491144  7.693055 0.9111175
+## zc-xb  1.2478415 -10.517107 13.012790 0.9996022
+## ya-xc -2.9058075 -12.511848  6.700233 0.9156876
+## za-xc -6.1303066 -15.736347  3.475734 0.3235914
+## zb-xc -5.0460319 -13.815107  3.723043 0.4255948
+## zc-xc -0.3991460 -10.005186  9.206894 0.9999984
+## za-ya -3.2244991 -12.830539  6.381541 0.8729546
+## zb-ya -2.1402243 -10.909299  6.628850 0.9671224
+## zc-ya  2.5066615  -7.099379 12.112702 0.9553520
+## zb-za  1.0842747  -7.684800  9.853350 0.9990523
+## zc-za  5.7311606  -3.874880 15.337201 0.3891252
+## zc-zb  4.6468858  -4.122189 13.415961 0.5099335</code></pre>
 </div>
 </div>
-<div id="numeric-numeric-pearson-correlation" class="section level4">
-<h4><strong>Numeric-Numeric (Pearson Correlation)</strong></h4>
+<div id="numeric-numeric-pearson-correlation" class="section level4 tabset">
+<h4 class="tabset"><strong>Numeric-Numeric (Pearson Correlation)</strong></h4>
+<p><font size = "4"><strong>Pearson Correlation</strong> (N <span class="math inline">\(\Rightarrow\)</span> N)</font></p>
 <div id="bivariate-2" class="section level5">
-<h5>Bivariate</h5>
+<h5><strong>Bivariate</strong></h5>
 <pre class="r"><code>cor.test(na.omit(ie.df)$v1_v2, na.omit(ie.df)$v1)</code></pre>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  na.omit(ie.df)$v1_v2 and na.omit(ie.df)$v1
-## t = 4.6879, df = 40, p-value = 3.183e-05
+## t = 6.5444, df = 42, p-value = 6.542e-08
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
-##  0.3559696 0.7615748
+##  0.5242691 0.8319382
 ## sample estimates:
-##       cor 
-## 0.5954762</code></pre>
+##      cor 
+## 0.710555</code></pre>
 </div>
 <div id="multivariate-2" class="section level5">
-<h5>Multivariate</h5>
+<h5><strong>Multivariate</strong></h5>
 <pre class="r"><code>by(na.omit(ie.df), na.omit(ie.df)$v5, function(x) cor.test(x$v1_v2, x$v1))</code></pre>
 <pre><code>## na.omit(ie.df)$v5: p
 ## 
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  x$v1_v2 and x$v1
-## t = 3.7434, df = 15, p-value = 0.001957
+## t = 5.6085, df = 25, p-value = 7.791e-06
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
-##  0.3218357 0.8812506
+##  0.5115199 0.8775334
 ## sample estimates:
 ##       cor 
-## 0.6949756 
+## 0.7464378 
 ## 
-## ---------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## na.omit(ie.df)$v5: q
 ## 
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  x$v1_v2 and x$v1
-## t = 2.8651, df = 23, p-value = 0.008753
+## t = 3.3402, df = 15, p-value = 0.004474
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
-##  0.1476481 0.7549930
+##  0.2513657 0.8628809
 ## sample estimates:
-##       cor 
-## 0.5128586</code></pre>
+##      cor 
+## 0.653104</code></pre>
 </div>
 </div>
 </div>
 <div id="regression" class="section level3 tabset">
 <h3 class="tabset"><strong>Regression</strong></h3>
-<div id="linear-regression-numeric-response" class="section level5">
-<h5><strong>linear regression (numeric response)</strong></h5>
-<pre class="r"><code># simple
-summary(lm(v1_v2 ~ v1, data = na.omit(ie.df)))</code></pre>
+<p><font size = "5"><strong>Regression</strong></font></p>
+<div id="linear-regression-numeric-response" class="section level4 tabset">
+<h4 class="tabset"><strong>linear regression (numeric response)</strong></h4>
+<p><font size = "4"><strong>Linear</strong></font></p>
+<div id="simple" class="section level5">
+<h5><strong>simple</strong></h5>
+<pre class="r"><code>summary(lm(v1_v2 ~ v1, data = na.omit(ie.df)))</code></pre>
 <pre><code>## 
 ## Call:
 ## lm(formula = v1_v2 ~ v1, data = na.omit(ie.df))
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -4.1681 -1.9494  0.1887  1.9457  3.4275 
+## -3.4068 -2.2032 -0.0404  2.2662  3.9645 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  12.1483     0.7167  16.951  &lt; 2e-16 ***
-## v1            0.8345     0.1780   4.688 3.18e-05 ***
+## (Intercept)  10.9523     0.6355  17.235  &lt; 2e-16 ***
+## v1            0.9900     0.1513   6.544 6.54e-08 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 2.352 on 40 degrees of freedom
-## Multiple R-squared:  0.3546, Adjusted R-squared:  0.3385 
-## F-statistic: 21.98 on 1 and 40 DF,  p-value: 3.183e-05</code></pre>
-<pre class="r"><code># multiple
-summary(lm(v1_v2 ~ v1 + factor(v5), data = na.omit(ie.df)))</code></pre>
+## Residual standard error: 2.314 on 42 degrees of freedom
+## Multiple R-squared:  0.5049, Adjusted R-squared:  0.4931 
+## F-statistic: 42.83 on 1 and 42 DF,  p-value: 6.542e-08</code></pre>
+</div>
+<div id="multiple" class="section level5">
+<h5><strong>multiple</strong></h5>
+<pre class="r"><code>summary(lm(v1_v2 ~ v1 + factor(v5), data = na.omit(ie.df)))</code></pre>
 <pre><code>## 
 ## Call:
 ## lm(formula = v1_v2 ~ v1 + factor(v5), data = na.omit(ie.df))
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -4.0931 -1.9139  0.2035  1.9651  3.3325 
+## -3.2152 -2.0640 -0.0979  2.3415  4.1531 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  12.3038     0.8903  13.819  &lt; 2e-16 ***
-## v1            0.8285     0.1812   4.573 4.76e-05 ***
-## factor(v5)q  -0.2263     0.7526  -0.301    0.765    
+## (Intercept)  10.7593     0.7009  15.350  &lt; 2e-16 ***
+## v1            0.9915     0.1523   6.511 8.12e-08 ***
+## factor(v5)q   0.4858     0.7213   0.674    0.504    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 2.38 on 39 degrees of freedom
-## Multiple R-squared:  0.3561, Adjusted R-squared:  0.3231 
-## F-statistic: 10.78 on 2 and 39 DF,  p-value: 0.0001871</code></pre>
-<pre class="r"><code># multiple with interaction terms
-summary(lm(v1_v2 ~ v1 + factor(v5) + v1*factor(v5), data = na.omit(ie.df)))</code></pre>
+## Residual standard error: 2.329 on 41 degrees of freedom
+## Multiple R-squared:  0.5103, Adjusted R-squared:  0.4864 
+## F-statistic: 21.36 on 2 and 41 DF,  p-value: 4.4e-07</code></pre>
+</div>
+<div id="multiple-w.-interaction-terms" class="section level5">
+<h5><strong>multiple w. interaction terms</strong></h5>
+<pre class="r"><code>summary(lm(v1_v2 ~ v1 + factor(v5) + v1*factor(v5), data = na.omit(ie.df)))</code></pre>
 <pre><code>## 
 ## Call:
 ## lm(formula = v1_v2 ~ v1 + factor(v5) + v1 * factor(v5), data = na.omit(ie.df))
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -4.6161 -1.8596  0.1143  1.8688  3.4281 
+## -3.3821 -2.3142 -0.1101  2.2247  4.2011 
 ## 
 ## Coefficients:
 ##                Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)     11.1318     1.2129   9.178 3.51e-11 ***
-## v1               1.1416     0.2861   3.991  0.00029 ***
-## factor(v5)q      1.6074     1.5035   1.069  0.29177    
-## v1:factor(v5)q  -0.5145     0.3667  -1.403  0.16871    
+## (Intercept)     10.4886     0.8199  12.792 1.02e-15 ***
+## v1               1.0680     0.1934   5.521 2.22e-06 ***
+## factor(v5)q      1.2056     1.3258   0.909    0.369    
+## v1:factor(v5)q  -0.2060     0.3174  -0.649    0.520    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 2.351 on 38 degrees of freedom
-## Multiple R-squared:  0.3878, Adjusted R-squared:  0.3395 
-## F-statistic: 8.024 on 3 and 38 DF,  p-value: 0.0002896</code></pre>
+## Residual standard error: 2.346 on 40 degrees of freedom
+## Multiple R-squared:  0.5154, Adjusted R-squared:  0.4791 
+## F-statistic: 14.18 on 3 and 40 DF,  p-value: 1.923e-06</code></pre>
 </div>
-<div id="logistic-regression-categorical-response" class="section level5">
-<h5><strong>logistic regression (categorical response)</strong></h5>
-<pre class="r"><code># simple
-summary(glm(factor(v5) ~ v1, data = na.omit(ie.df), family = &quot;binomial&quot;)) # p-value</code></pre>
+</div>
+<div id="logistic-regression-categorical-response" class="section level4 tabset">
+<h4 class="tabset"><strong>logistic regression (categorical response)</strong></h4>
+<p><font size = "4"><strong>Logistic</strong></font></p>
+<div id="simple-1" class="section level5">
+<h5><strong>simple</strong></h5>
+<pre class="r"><code>summary(glm(factor(v5) ~ v1, data = na.omit(ie.df), family = &quot;binomial&quot;)) # p-value</code></pre>
 <pre><code>## 
 ## Call:
 ## glm(formula = factor(v5) ~ v1, family = &quot;binomial&quot;, data = na.omit(ie.df))
 ## 
 ## Deviance Residuals: 
-##    Min      1Q  Median      3Q     Max  
-## -1.503  -1.305   0.907   1.037   1.196  
+##     Min       1Q   Median       3Q      Max  
+## -1.0050  -0.9945  -0.9705   1.3683   1.4001  
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(&gt;|z|)
-## (Intercept)   0.7731     0.6382   1.211    0.226
-## v1           -0.1102     0.1558  -0.707    0.479
+## (Intercept) -0.41598    0.56269  -0.739    0.460
+## v1          -0.01332    0.13443  -0.099    0.921
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 56.691  on 41  degrees of freedom
-## Residual deviance: 56.185  on 40  degrees of freedom
-## AIC: 60.185
+##     Null deviance: 58.704  on 43  degrees of freedom
+## Residual deviance: 58.694  on 42  degrees of freedom
+## AIC: 62.694
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
+<p><font size = "3"><strong>Get Odd Ratios</strong></font></p>
 <pre class="r"><code>exp(glm(factor(v5) ~ v1, data = na.omit(ie.df), family = &quot;binomial&quot;)$coefficients) # odd-ratios</code></pre>
 <pre><code>## (Intercept)          v1 
-##   2.1663667   0.8956321</code></pre>
+##   0.6596928   0.9867732</code></pre>
+<p><font size = "3"><strong>Get Confidence Interval of Odd Ratios</strong></font></p>
 <pre class="r"><code>exp(confint(glm(factor(v5) ~ v1, data = na.omit(ie.df), family = &quot;binomial&quot;))) # confidence interval of odd ratios</code></pre>
 <pre><code>##                 2.5 %   97.5 %
-## (Intercept) 0.6415557 8.177577
-## v1          0.6524655 1.213461</code></pre>
-<pre class="r"><code># multiple
-summary(glm(factor(v5) ~ v1 + factor(v3), data = na.omit(ie.df), family = &quot;binomial&quot;)) # p-value</code></pre>
+## (Intercept) 0.2100845 1.965046
+## v1          0.7533296 1.285323</code></pre>
+</div>
+<div id="multiple-1" class="section level5">
+<h5><strong>multiple</strong></h5>
+<pre class="r"><code>summary(glm(factor(v5) ~ v1 + factor(v3), data = na.omit(ie.df), family = &quot;binomial&quot;)) # p-value</code></pre>
 <pre><code>## 
 ## Call:
 ## glm(formula = factor(v5) ~ v1 + factor(v3), family = &quot;binomial&quot;, 
@@ -1224,76 +1250,88 @@ summary(glm(factor(v5) ~ v1 + factor(v3), data = na.omit(ie.df), family = &quot;
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -1.7808  -1.1543   0.7722   1.0001   1.3580  
+## -1.3283  -1.1287  -0.5339   1.0421   2.0026  
 ## 
 ## Coefficients:
-##             Estimate Std. Error z value Pr(&gt;|z|)
-## (Intercept)  0.97858    0.89148   1.098    0.272
-## v1          -0.08638    0.15972  -0.541    0.589
-## factor(v3)y -0.75432    0.83625  -0.902    0.367
-## factor(v3)z  0.40436    0.97482   0.415    0.678
+##              Estimate Std. Error z value Pr(&gt;|z|)  
+## (Intercept) -0.098639   0.735798  -0.134   0.8934  
+## v1          -0.005134   0.148189  -0.035   0.9724  
+## factor(v3)y -1.755131   0.902320  -1.945   0.0518 .
+## factor(v3)z  0.451477   0.765079   0.590   0.5551  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 56.691  on 41  degrees of freedom
-## Residual deviance: 53.723  on 38  degrees of freedom
-## AIC: 61.723
+##     Null deviance: 58.704  on 43  degrees of freedom
+## Residual deviance: 51.588  on 40  degrees of freedom
+## AIC: 59.588
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
+<p><font size = "3"><strong>Get Odd Ratios</strong></font></p>
 <pre class="r"><code>exp(glm(factor(v5) ~ v1 + factor(v3), data = na.omit(ie.df), family = &quot;binomial&quot;)$coefficients) # odd-ratios</code></pre>
 <pre><code>## (Intercept)          v1 factor(v3)y factor(v3)z 
-##   2.6606623   0.9172419   0.4703326   1.4983450</code></pre>
+##   0.9060694   0.9948796   0.1728846   1.5706304</code></pre>
+<p><font size = "3"><strong>Get Confidence Interval of Odd Ratios</strong></font></p>
 <pre class="r"><code>exp(confint(glm(factor(v5) ~ v1 + factor(v3), data = na.omit(ie.df), family = &quot;binomial&quot;))) # confidence interval of odd ratios</code></pre>
 <pre><code>##                  2.5 %    97.5 %
-## (Intercept) 0.49775258 18.173335
-## v1          0.66348638  1.253595
-## factor(v3)y 0.08075298  2.329741
-## factor(v3)z 0.21131763 10.813858</code></pre>
-<pre class="r"><code># multiple with interaction terms
-summary(glm(factor(v5) ~ v1 + factor(v3) + v1*factor(v3), data = na.omit(ie.df), family = &quot;binomial&quot;)) # p-value</code></pre>
+## (Intercept) 0.20736772 3.9319175
+## v1          0.73843801 1.3334003
+## factor(v3)y 0.02232475 0.8870114
+## factor(v3)z 0.35265087 7.3697434</code></pre>
+</div>
+<div id="multiple-w.-interaction-terms-1" class="section level5">
+<h5><strong>multiple w. interaction terms</strong></h5>
+<pre class="r"><code>summary(glm(factor(v5) ~ v1 + factor(v3) + v1*factor(v3), data = na.omit(ie.df), family = &quot;binomial&quot;)) # p-value</code></pre>
 <pre><code>## 
 ## Call:
 ## glm(formula = factor(v5) ~ v1 + factor(v3) + v1 * factor(v3), 
 ##     family = &quot;binomial&quot;, data = na.omit(ie.df))
 ## 
 ## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.8021  -1.1667   0.6829   1.0012   1.4643  
+##      Min        1Q    Median        3Q       Max  
+## -1.77177  -0.88361  -0.01233   0.87187   1.60432  
 ## 
 ## Coefficients:
-##                 Estimate Std. Error z value Pr(&gt;|z|)
-## (Intercept)     1.215591   1.321832   0.920    0.358
-## v1             -0.155513   0.318982  -0.488    0.626
-## factor(v3)y    -0.755773   1.592381  -0.475    0.635
-## factor(v3)z    -0.988240   1.913449  -0.516    0.606
-## v1:factor(v3)y  0.005159   0.381619   0.014    0.989
-## v1:factor(v3)z  0.440582   0.525377   0.839    0.402
+##                Estimate Std. Error z value Pr(&gt;|z|)  
+## (Intercept)     -1.9547     1.2081  -1.618   0.1057  
+## v1               0.4853     0.2820   1.721   0.0853 .
+## factor(v3)y      4.6263     3.1175   1.484   0.1378  
+## factor(v3)z      2.9416     1.5890   1.851   0.0641 .
+## v1:factor(v3)y  -3.2503     2.2758  -1.428   0.1532  
+## v1:factor(v3)z  -0.6846     0.3784  -1.809   0.0704 .
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 56.691  on 41  degrees of freedom
-## Residual deviance: 52.772  on 36  degrees of freedom
-## AIC: 64.772
+##     Null deviance: 58.704  on 43  degrees of freedom
+## Residual deviance: 42.407  on 38  degrees of freedom
+## AIC: 54.407
 ## 
-## Number of Fisher Scoring iterations: 4</code></pre>
+## Number of Fisher Scoring iterations: 8</code></pre>
+<p><font size = "3"><strong>Get Odd Ratios</strong></font></p>
 <pre class="r"><code>exp(glm(factor(v5) ~ v1 + factor(v3) + v1*factor(v3), data = na.omit(ie.df), family = &quot;binomial&quot;)$coefficients) # odd-ratios</code></pre>
-<pre><code>##    (Intercept)             v1    factor(v3)y    factor(v3)z v1:factor(v3)y v1:factor(v3)z 
-##      3.3722878      0.8559760      0.4696473      0.3722311      1.0051722      1.5536115</code></pre>
+<pre><code>##    (Intercept)             v1    factor(v3)y    factor(v3)z v1:factor(v3)y 
+##     0.14161143     1.62466501   102.13594619    18.94542640     0.03876305 
+## v1:factor(v3)z 
+##     0.50427989</code></pre>
+<p><font size = "3"><strong>Get Confidence Interval of Odd Ratios</strong></font></p>
 <pre class="r"><code>exp(confint(glm(factor(v5) ~ v1 + factor(v3) + v1*factor(v3), data = na.omit(ie.df), family = &quot;binomial&quot;))) # confidence interval of odd ratios</code></pre>
-<pre><code>##                      2.5 %    97.5 %
-## (Intercept)    0.307656272 82.872987
-## v1             0.422642545  1.615857
-## factor(v3)y    0.013309635  9.446349
-## factor(v3)z    0.006448225 17.494486
-## v1:factor(v3)y 0.471526394  2.240060
-## v1:factor(v3)z 0.556439489  4.699543</code></pre>
+<pre><code>##                       2.5 %       97.5 %
+## (Intercept)    8.689925e-03 1.199147e+00
+## v1             9.847364e-01 3.105450e+00
+## factor(v3)y    5.988742e-01 4.260195e+05
+## factor(v3)z    1.027530e+00 6.036856e+02
+## v1:factor(v3)y 2.651192e-05 5.983851e-01
+## v1:factor(v3)z 2.231868e-01 1.018921e+00</code></pre>
+</div>
+</div>
 </div>
 </div>
 
 
 
-</div>
-</div>
 
 </div>
 
@@ -1326,35 +1364,6 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
-<script>
-$(document).ready(function ()  {
-
-    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
-    $('.unlisted.unnumbered').addClass('toc-ignore')
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
