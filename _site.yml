@@ -10,4 +10,5 @@ navbar:
 output:
   html_document:
     toc: TRUE
+    toc_float: true
     theme: "cosmo"
