@@ -1,5 +1,10 @@
 ---
 title: "QAC201Z Resources"
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
 author: "Tony Wen"
 date: "1/3/2022"
 output: html_document
