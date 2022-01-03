@@ -1,0 +1,48 @@
+---
+title: "StatQuest Videos"
+---
+```{r echo = F, warning = F}
+library(vembedr)
+```
+
+# {.tabset}
+
+## **Hypothesis Testing** {.tabset}
+
+### **Hypothesis Testing and The Null Hypothesis**
+```{r echo = F}
+embed_url("https://www.youtube.com/watch?v=0oc49DyA3hU&list=PLblh5JKOoLUK0FLuzwntyYI10UQFUhsY9&index=8")
+```
+
+### **The Alternative Hypothesis**
+```{r echo = F}
+embed_url("https://www.youtube.com/watch?v=5koKb5B_YWo&list=PLblh5JKOoLUK0FLuzwntyYI10UQFUhsY9&index=9")
+```
+
+### **p-values**
+```{r echo = F}
+embed_url("https://www.youtube.com/watch?v=vemZtEM63GY&list=PLblh5JKOoLUK0FLuzwntyYI10UQFUhsY9&index=10")
+```
+
+### **p-vhacking**
+```{r echo = F}
+embed_url("https://www.youtube.com/watch?v=HDCOUXE3HMM&list=PLblh5JKOoLUK0FLuzwntyYI10UQFUhsY9&index=12")
+```
+
+
+## **Regression** {.tabset}
+
+### **Linear Regression in R**
+```{r echo = F}
+embed_url("https://www.youtube.com/watch?v=u1cc1r_Y7M0&list=PLblh5JKOoLUIzaEkCLIUxQFjPIlapw8nU&index=3")
+```
+
+### **Multiple Linear Regression in R**
+```{r echo = F}
+embed_url("https://www.youtube.com/watch?v=hokALdIst8k&list=PLblh5JKOoLUIzaEkCLIUxQFjPIlapw8nU&index=7")
+```
+
+### **Logistic Regression in R**
+```{r echo = F}
+embed_url("https://www.youtube.com/watch?v=C4N3_XJJ-jU&list=PLblh5JKOoLUKxzEP5HA2d-Li7IJkHfXSe&index=7")
+```

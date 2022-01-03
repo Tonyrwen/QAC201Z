@@ -7,6 +7,8 @@ navbar:
     href: index.html
   - text: "Translation Syntax Example"
     href: translation_syntax.html
+  - text: "StatQuest Videos"
+    href: statquest_vid.html
 output:
   html_document:
     theme: "cosmo"
