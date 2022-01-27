@@ -4,6 +4,8 @@ title: "Resources"
 
 <font size = "4">
 
++ [Zoom Link for Screen Sharing](https://wesleyan.zoom.us/j/9832589882)
+
 + [P-drive Setup Instruction](https://qac.blogs.wesleyan.edu/the-p-drivedragon/)
 
 + Function "Dictionary"
