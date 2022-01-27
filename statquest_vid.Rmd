@@ -1,11 +1,16 @@
 ---
-title: "StatQuest Videos"
+title: "Videos"
 ---
 ```{r echo = F, warning = F}
 library(vembedr)
 ```
 
 # {.tabset}
+
+## **The Power of Data Science & The Importance of Data Context**
+```{r echo = F}
+embed_url("https://www.youtube.com/watch?v=bVG2OQp6jEQ")
+```
 
 ## **Hypothesis Testing** {.tabset}
 
